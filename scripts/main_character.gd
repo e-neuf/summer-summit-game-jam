@@ -17,8 +17,6 @@ const BODY_RADIUS := 20.0 #matches this node's CollisionShape2D circle radius
 
 var polarity: int = 1
 var flip_cooldown: float = 0.0
-#var magnets_in_range=Global.MC_magnets_in_range
-#var attract_mag_in_range=Global.MC_attract_magnets_in_range
 
 func register_magnet(m) -> void:
 	Global.MC_magnets_in_range.append(m)
@@ -26,11 +24,9 @@ func register_magnet(m) -> void:
 func unregister_magnet(m) -> void:
 	Global.MC_magnets_in_range.erase(m)
 	
-func add_attract_mag(m)-> void:
-	Global.MC_attract_magnets_in_range.append(m)
-	
-func kill_attract_mag(m)-> void:
-	Global.MC_attract_magnets_in_range.erase(m)
+func set_polarity(pol) -> void:
+	polarity = pol
+	_update_visual()
 	
 func _get_color() -> Color:
 	return POSITIVE_COLOR if polarity > 0 else NEGATIVE_COLOR

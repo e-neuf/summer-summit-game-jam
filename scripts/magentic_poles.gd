@@ -52,7 +52,6 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_body_exited(body: Node2D) -> void:
 	if body.has_method("unregister_magnet"):
 		body.unregister_magnet(self);
-		body.kill_attract_mag(self);
 
 func _on_mouse_entered() -> void:
 	var is_attractive = polarity != Global.Main_character.polarity # add glow function, i lowkey dont know how to make glow effect
