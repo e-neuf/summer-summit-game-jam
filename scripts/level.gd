@@ -22,5 +22,5 @@ func return_to_menu() -> void:
 # Resets the player's position and polarity
 func restart_level() -> void:
 	player.global_position = player_start_pos
-	player.polarity = player_start_polarity
+	player.set_polarity(player_start_polarity)
 	player.velocity = Vector2.ZERO
