@@ -33,7 +33,6 @@ func _get_color() -> Color:
 	return POSITIVE_COLOR if polarity > 0 else NEGATIVE_COLOR
 
 func _ready() -> void:
-	Global.Main_ch
 	_update_visual()
 
 func _draw() -> void:
