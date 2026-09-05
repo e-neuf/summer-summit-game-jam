@@ -49,6 +49,7 @@ func attraction(m)-> void:
 	var to_target = target - global_position
 	var dist = max(to_target.length(), 1.0)
 	var target_vel = (to_target / dist) * HOMING_SPEED
+	print(target_vel)
 	velocity = velocity.lerp(target_vel, HOMING_RESPONSE)
 	move_and_slide()
 
@@ -57,9 +58,9 @@ func _physics_process(delta: float) -> void:
 		flip_cooldown -= delta
 
 	if Input.is_action_just_pressed("flip_polarity") and flip_cooldown <= 0.0:
-		print(polarity);
+		#print(polarity);
 		polarity *= -1
-		print(polarity);
+		#print(polarity);
 		flip_cooldown = FLIP_COOLDOWN
 		_update_visual()
 
@@ -73,9 +74,9 @@ func _physics_process(delta: float) -> void:
 			var interaction= 0
 			#print(mag.name)
 			interaction= -(mag.polarity * polarity)
-			print(mag.polarity)
-			print(polarity)
-			print(interaction)
+			#print(mag.polarity)
+			#print(polarity)
+			#print(interaction)
 			if(interaction==-1):
 				var away = global_position - mag.global_position
 				var d = max(away.length(), 1.0)
@@ -84,8 +85,8 @@ func _physics_process(delta: float) -> void:
 				#program a stop condition
 			else:
 				add_attract_mag(mag)
-				for m in attract_mag_in_range:
-					print(m.name)
+				#for m in attract_mag_in_range:
+					#print(m.name)
 	
 	#when the player clicks on the attract,you can get them to run the attract function, which is what manjari coded.
 				
@@ -107,11 +108,11 @@ func _physics_process(delta: float) -> void:
 		#if interaction == 1 and passed:
 			#interaction = 0
 #
-	#var input_dir := Input.get_axis("move_left", "move_right")
-	#if input_dir != 0.0:
-		#velocity.x = move_toward(velocity.x, input_dir * MAX_SPEED, ACCEL * delta)
-	#elif is_on_floor():
-		#velocity.x = move_toward(velocity.x, 0.0, ACCEL * delta)
+	var input_dir := Input.get_axis("move_left", "move_right")
+	if input_dir != 0.0:
+		velocity.x = move_toward(velocity.x, input_dir * MAX_SPEED, ACCEL * delta)
+	else:
+		velocity.x = move_toward(velocity.x, 0.0, ACCEL * delta)
 #
 	#if is_on_floor() and Input.is_action_just_pressed("jump"):
 		#velocity.y = JUMP_VELOCITY
