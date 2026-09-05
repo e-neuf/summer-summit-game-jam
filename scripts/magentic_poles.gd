@@ -1,19 +1,52 @@
 extends Area2D
 
-var sign= 1 #1 is postive, 0 is negative
-# Called when the node enters the scene tree for the first time.
+const POSITIVE_COLOR := Color(0.15, 0.45, 1.0)
+const NEGATIVE_COLOR := Color(1.0, 0.15, 0.15)
+
+const BODY_RADIUS := 18.0 #solid visible body, always this size regardless of field_radius
+const RING_ALPHA := 0.45
+const RING_WIDTH := 3.0
+const DASH_LENGTH := 10.0
+const GAP_LENGTH := 8.0
+
+enum Kind { POST, HAZARD, ENEMY, GOAL }
+
+@export var kind: Kind = Kind.POST
+@export var polarity: int = 1 #this needs to be either 1 or -1 to be able to calculate the math
+@export var field_radius: float = 70.0 #how far away the player needs to be for the field to affect them
+
+func _get_color() -> Color:
+	return POSITIVE_COLOR if polarity > 0 else NEGATIVE_COLOR
+
 func _ready() -> void:
-	pass # Replace with function body.
+	add_to_group("magnets")
+	$Label.text = "+" if polarity > 0 else "−"
+	$Label.modulate = _get_color()
+	if $CollisionShape2D.shape:
+		$CollisionShape2D.shape.radius = field_radius
+	queue_redraw()
 
+func _process(_delta: float) -> void:
+	queue_redraw()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _draw() -> void:
+	var color := _get_color()
+	draw_circle(Vector2.ZERO, BODY_RADIUS, color)
+	_draw_dashed_ring(field_radius, Color(color.r, color.g, color.b, RING_ALPHA))
 
+#to show mangetic field
+func _draw_dashed_ring(radius: float, color: Color) -> void:
+	var segment_angle := DASH_LENGTH / radius
+	var gap_angle := GAP_LENGTH / radius
+	var angle := 0.0
+	while angle < TAU:
+		draw_arc(Vector2.ZERO, radius, angle, angle + segment_angle, 6, color, RING_WIDTH)
+		angle += segment_angle + gap_angle
 
 func _on_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
-	#check postioning and sign of main character
-	#figure out positon of character, and set up the buttons
-	#if sign is equal to the sign of the pole, make the player move away
-	#otherwise, make the player move towards
+	if body.has_method("register_magnet"):
+		body.register_magnet(self)
+
+func _on_body_exited(body: Node2D) -> void:
+	if body.has_method("unregister_magnet"):
+		body.unregister_magnet(self)
