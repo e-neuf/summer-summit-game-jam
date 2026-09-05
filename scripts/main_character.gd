@@ -17,20 +17,20 @@ const BODY_RADIUS := 20.0 #matches this node's CollisionShape2D circle radius
 
 var polarity: int = 1
 var flip_cooldown: float = 0.0
-var magnets_in_range=Global.MC_magnets_in_range
-var attract_mag_in_range=Global.MC_attract_magnets_in_range
+#var magnets_in_range=Global.MC_magnets_in_range
+#var attract_mag_in_range=Global.MC_attract_magnets_in_range
 
 func register_magnet(m) -> void:
-	magnets_in_range.append(m)
+	Global.MC_magnets_in_range.append(m)
 
 func unregister_magnet(m) -> void:
-	magnets_in_range.erase(m)
+	Global.MC_magnets_in_range.erase(m)
 	
 func add_attract_mag(m)-> void:
-	attract_mag_in_range.append(m)
+	Global.MC_attract_magnets_in_range.append(m)
 	
 func kill_attract_mag(m)-> void:
-	attract_mag_in_range.erase(m)
+	Global.MC_attract_magnets_in_range.erase(m)
 	
 func _get_color() -> Color:
 	return POSITIVE_COLOR if polarity > 0 else NEGATIVE_COLOR
@@ -61,10 +61,11 @@ func _physics_process(delta: float) -> void:
 	var nearest = null
 	var nearest_dist = INF
 	# program that if they are all in range, and they repell you, otherwise you can click on them to attract to them.
-	for mag in magnets_in_range:
+	for mag in Global.MC_magnets_in_range:
 		if not is_instance_valid(mag):
 			continue
 		else:
+			print(mag.name)
 			if(mag.polarity==polarity):
 				print("Being repelled by %s" % mag.name)
 				var away = global_position - mag.global_position

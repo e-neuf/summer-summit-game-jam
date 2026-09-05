@@ -67,7 +67,7 @@ func _on_mouse_exited() -> void:
 func _on_self_clicked(viewport: Node, event: InputEvent, shape_idx: int):
 	if event.is_action_pressed("mouse_click"):
 		print("help "+ self.name)
-		if (polarity != Global.Main_character.polarity):
+		if (polarity != Global.Main_character.polarity && Global.MC_magnets_in_range.rfind(self)!=-1):
 			print("I am attractive")
 			Global.Current_Attraction=self;
 		else:
