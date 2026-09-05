@@ -51,10 +51,11 @@ func attraction(m)-> void:
 	var target = m.global_position + Vector2(HOMING_LEAD, 0)
 	var to_target = target - global_position
 	var dist = max(to_target.length(), 1.0)
+	if(to_target==Vector2(0,0)):
+		Global.Current_Attraction=null
 	var target_vel = (to_target / dist) * HOMING_SPEED
 	print(target_vel)
 	velocity = velocity.lerp(target_vel, HOMING_RESPONSE)
-	move_and_slide()
 
 func _physics_process(delta: float) -> void:
 	if flip_cooldown > 0.0:
@@ -74,23 +75,26 @@ func _physics_process(delta: float) -> void:
 		if not is_instance_valid(mag):
 			continue
 		else:
-			var interaction= 0
 			#print(mag.name)
-			interaction= -(mag.polarity * polarity)
 			#print(mag.polarity)
 			#print(polarity)
 			#print(interaction)
-			if(interaction==-1):
+			if(Global.Main_character.polarity==polarity):
 				var away = global_position - mag.global_position
 				var d = max(away.length(), 1.0)
 				var target_vel = (away / d) * REPEL_SPEED
 				velocity = velocity.lerp(target_vel, HOMING_RESPONSE)
 				#program a stop condition
-			else:
+			elif(Global.Main_character.polarity!=polarity):
 				add_attract_mag(mag)
 				#for m in attract_mag_in_range:
 					#print(m.name)
-	
+	if(Global.Current_Attraction!=null):
+		attraction(Global.Current_Attraction)
+	var size=magnets_in_range.size()
+	#print(size);
+	if(size==0):
+		velocity=Vector2(0,0);
 	#when the player clicks on the attract,you can get them to run the attract function, which is what manjari coded.
 				
 				#most likely means it is 1 -> should glow	

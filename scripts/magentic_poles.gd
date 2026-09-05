@@ -52,7 +52,6 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_body_exited(body: Node2D) -> void:
 	if body.has_method("unregister_magnet"):
 		body.unregister_magnet(self);
-	if body.has_method("kill_attract_mag"):
 		body.kill_attract_mag(self);
 
 func _on_mouse_entered() -> void:
@@ -70,5 +69,9 @@ func _on_self_clicked(viewport: Node, event: InputEvent, shape_idx: int):
 		print("help "+ self.name)
 		if (polarity != Global.Main_character.polarity):
 			print("I am attractive")
-			if Global.Main_character.has_method("attraction"):
-				Global.Main_character.attraction(self);
+			Global.Current_Attraction=self;
+		else:
+			print("I am unattractive")
+			Global.Current_Attraction=null;
+			#if Global.Main_character.has_method("attraction"):
+				#Global.Main_character.attraction(self);
