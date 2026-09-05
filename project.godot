@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="SSGJTEst"
-run/main_scene="uid://2mbt44uqnotu"
+run/main_scene="uid://rid3t6xsrtbw"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
