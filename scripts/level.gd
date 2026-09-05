@@ -23,3 +23,4 @@ func return_to_menu() -> void:
 func restart_level() -> void:
 	player.global_position = player_start_pos
 	player.polarity = player_start_polarity
+	player.velocity = Vector2.ZERO
