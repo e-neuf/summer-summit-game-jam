@@ -46,7 +46,43 @@ func _draw_dashed_ring(radius: float, color: Color) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.has_method("register_magnet"):
 		body.register_magnet(self)
+	
 
 func _on_body_exited(body: Node2D) -> void:
 	if body.has_method("unregister_magnet"):
-		body.unregister_magnet(self)
+		body.unregister_magnet(self);
+	if body.has_method("kill_attract_mag"):
+		body.kill_attract_mag(self);
+		
+
+
+
+func _on_mouse_entered() -> void:
+	var in_list=false;
+	for m in Global.MC_attract_magnets_in_range:
+		if m==self:
+			in_list=true;
+			pass
+	if in_list:
+		pass # add glow function, i lowkey dont know how to make glow effect
+	##see if self is in the global list
+	##if is, glow?? and set a variable to attractable.
+	## will need a mouse clicked.
+
+
+func _on_mouse_exited() -> void:
+	pass # Replace with function body.
+	
+
+
+
+
+
+
+
+
+
+
+func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event.is_action_pressed("mouse_click"):
+		print("help")

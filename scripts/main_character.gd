@@ -17,14 +17,18 @@ const BODY_RADIUS := 20.0 #matches this node's CollisionShape2D circle radius
 
 var polarity: int = 1
 var flip_cooldown: float = 0.0
-var magnets_in_range: Array = []
+var magnets_in_range=Global.MC_magnets_in_range
+var attract_mag_in_range=Global.MC_attract_magnets_in_range
 
 func register_magnet(m) -> void:
 	magnets_in_range.append(m)
 
 func unregister_magnet(m) -> void:
 	magnets_in_range.erase(m)
-
+func add_attract_mag(m)-> void:
+	attract_mag_in_range.append(m)
+func kill_attract_mag(m)-> void:
+	attract_mag_in_range.erase(m)
 func _get_color() -> Color:
 	return POSITIVE_COLOR if polarity > 0 else NEGATIVE_COLOR
 
@@ -52,45 +56,64 @@ func _physics_process(delta: float) -> void:
 
 	var nearest = null
 	var nearest_dist = INF
-	for m in magnets_in_range:
-		if not is_instance_valid(m):
+	# program that if they are all in range, and they repell you, otherwise you can click on them to attract to them.
+	for mag in magnets_in_range:
+		if not is_instance_valid(mag):
 			continue
-		var d = global_position.distance_to(m.global_position)
-		if d < nearest_dist:
-			nearest = m
-			nearest_dist = d
-
-	var interaction = 0
-	if nearest:
-		interaction = -(nearest.polarity * polarity)  #+1 attract, -1 repel
-		print(interaction);
-		print(nearest.polarity);
-		var passed: bool = (nearest.kind == nearest.Kind.POST or nearest.kind == nearest.Kind.GOAL) and global_position.x > nearest.global_position.x + PASSED_MARGIN
-		if interaction == 1 and passed:
-			interaction = 0
-
-	var input_dir := Input.get_axis("move_left", "move_right")
-	if input_dir != 0.0:
-		velocity.x = move_toward(velocity.x, input_dir * MAX_SPEED, ACCEL * delta)
-	elif is_on_floor():
-		velocity.x = move_toward(velocity.x, 0.0, ACCEL * delta)
-
-	if is_on_floor() and Input.is_action_just_pressed("jump"):
-		velocity.y = JUMP_VELOCITY
-
-	if nearest and interaction == 1:
-		var target = nearest.global_position + Vector2(HOMING_LEAD, 0)
-		var to_target = target - global_position
-		var dist = max(to_target.length(), 1.0)
-		var target_vel = (to_target / dist) * HOMING_SPEED
-		velocity = velocity.lerp(target_vel, HOMING_RESPONSE)
-	elif nearest and interaction == -1:
-		var away = global_position - nearest.global_position
-		var d = max(away.length(), 1.0)
-		var target_vel = (away / d) * REPEL_SPEED
-		velocity = velocity.lerp(target_vel, HOMING_RESPONSE)
-	else:
-		velocity.y += GRAVITY * delta
+		else:
+			var interaction= 0
+			interaction= -(mag.polarity * polarity)
+			if(interaction==-1):
+				var away = global_position - mag.global_position
+				var d = max(away.length(), 1.0)
+				var target_vel = (away / d) * REPEL_SPEED
+				velocity = velocity.lerp(target_vel, HOMING_RESPONSE)
+				#program a stop condition
+			else:
+				add_attract_mag(mag)
+	
+	#when the player clicks on the attract,you can get them to run the attract function, which is what manjari coded.
+				
+				#most likely means it is 1 -> should glow	
+	#for m in magnets_in_range:
+		#if not is_instance_valid(m):
+			#continue
+		#var d = global_position.distance_to(m.global_position)
+		#if d < nearest_dist:
+			#nearest = m
+			#nearest_dist = d
+#
+	#var interaction = 0
+	#if nearest:
+		#interaction = -(nearest.polarity * polarity)  #+1 attract, -1 repel
+		#print(interaction);
+		#print(nearest.polarity);
+		#var passed: bool = (nearest.kind == nearest.Kind.POST or nearest.kind == nearest.Kind.GOAL) and global_position.x > nearest.global_position.x + PASSED_MARGIN
+		#if interaction == 1 and passed:
+			#interaction = 0
+#
+	#var input_dir := Input.get_axis("move_left", "move_right")
+	#if input_dir != 0.0:
+		#velocity.x = move_toward(velocity.x, input_dir * MAX_SPEED, ACCEL * delta)
+	#elif is_on_floor():
+		#velocity.x = move_toward(velocity.x, 0.0, ACCEL * delta)
+#
+	#if is_on_floor() and Input.is_action_just_pressed("jump"):
+		#velocity.y = JUMP_VELOCITY
+#
+	#if nearest and interaction == 1:
+		#var target = nearest.global_position + Vector2(HOMING_LEAD, 0)
+		#var to_target = target - global_position
+		#var dist = max(to_target.length(), 1.0)
+		#var target_vel = (to_target / dist) * HOMING_SPEED
+		#velocity = velocity.lerp(target_vel, HOMING_RESPONSE)
+	#elif nearest and interaction == -1:
+		#var away = global_position - nearest.global_position
+		#var d = max(away.length(), 1.0)
+		#var target_vel = (away / d) * REPEL_SPEED
+		#velocity = velocity.lerp(target_vel, HOMING_RESPONSE)
+	#else:
+		#velocity.y += GRAVITY * delta
 
 	move_and_slide()
 
