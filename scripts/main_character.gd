@@ -46,27 +46,17 @@ func _update_visual() -> void:
 	$Label.text = "+" if polarity > 0 else "−"
 	$Label.modulate = _get_color()
 	queue_redraw()
-	
-func attraction(m)-> void:
-	var target = m.global_position + Vector2(HOMING_LEAD, 0)
-	var to_target = target - global_position
-	var dist = max(to_target.length(), 1.0)
-	if(to_target==Vector2(0,0)):
-		Global.Current_Attraction=null
-	var target_vel = (to_target / dist) * HOMING_SPEED
-	print(target_vel)
-	velocity = velocity.lerp(target_vel, HOMING_RESPONSE)
 
 func _physics_process(delta: float) -> void:
 	if flip_cooldown > 0.0:
 		flip_cooldown -= delta
 
 	if Input.is_action_just_pressed("flip_polarity") and flip_cooldown <= 0.0:
-		#print(polarity);
 		polarity *= -1
-		#print(polarity);
 		flip_cooldown = FLIP_COOLDOWN
 		_update_visual()
+		
+	var target_velocity = Vector2.ZERO
 
 	var nearest = null
 	var nearest_dist = INF
@@ -75,68 +65,34 @@ func _physics_process(delta: float) -> void:
 		if not is_instance_valid(mag):
 			continue
 		else:
-			#print(mag.name)
-			#print(mag.polarity)
-			#print(polarity)
-			#print(interaction)
-			if(Global.Main_character.polarity==polarity):
+			if(mag.polarity==polarity):
+				print("Being repelled by %s" % mag.name)
 				var away = global_position - mag.global_position
 				var d = max(away.length(), 1.0)
 				var target_vel = (away / d) * REPEL_SPEED
-				velocity = velocity.lerp(target_vel, HOMING_RESPONSE)
-				#program a stop condition
-			elif(Global.Main_character.polarity!=polarity):
-				add_attract_mag(mag)
-				#for m in attract_mag_in_range:
-					#print(m.name)
-	if(Global.Current_Attraction!=null):
-		attraction(Global.Current_Attraction)
-	var size=magnets_in_range.size()
-	#print(size);
-	if(size==0):
-		velocity=Vector2(0,0);
-	#when the player clicks on the attract,you can get them to run the attract function, which is what manjari coded.
-				
-				#most likely means it is 1 -> should glow	
-	#for m in magnets_in_range:
-		#if not is_instance_valid(m):
-			#continue
-		#var d = global_position.distance_to(m.global_position)
-		#if d < nearest_dist:
-			#nearest = m
-			#nearest_dist = d
-#
-	#var interaction = 0
-	#if nearest:
-		#interaction = -(nearest.polarity * polarity)  #+1 attract, -1 repel
-		#print(interaction);
-		#print(nearest.polarity);
-		#var passed: bool = (nearest.kind == nearest.Kind.POST or nearest.kind == nearest.Kind.GOAL) and global_position.x > nearest.global_position.x + PASSED_MARGIN
-		#if interaction == 1 and passed:
-			#interaction = 0
-#
-	var input_dir := Input.get_axis("move_left", "move_right")
-	if input_dir != 0.0:
-		velocity.x = move_toward(velocity.x, input_dir * MAX_SPEED, ACCEL * delta)
+				target_velocity += target_vel
+					
+	if (Global.Current_Attraction != null):
+		print("Being attracted by %s" % Global.Current_Attraction.name)
+		var to_target = Global.Current_Attraction.global_position - global_position
+		if (to_target.length() < 0.1):
+			print("No longer attracted to it")
+			Global.Current_Attraction = null
+			target_velocity = Vector2.ZERO
+			pass
+		var target_vel = to_target.normalized() * HOMING_SPEED
+		target_velocity += target_vel
+
+	if (target_velocity == Vector2.ZERO):
+		var input_dir := Input.get_axis("move_left", "move_right")
+		if input_dir != 0.0:
+			velocity.x = move_toward(velocity.x, input_dir * MAX_SPEED, ACCEL * delta)
+		else:
+			velocity.x = move_toward(velocity.x, 0.0, ACCEL * delta)
+			
 	else:
-		velocity.x = move_toward(velocity.x, 0.0, ACCEL * delta)
-#
-	#if is_on_floor() and Input.is_action_just_pressed("jump"):
-		#velocity.y = JUMP_VELOCITY
-#
-	#if nearest and interaction == 1:
-		#var target = nearest.global_position + Vector2(HOMING_LEAD, 0)
-		#var to_target = target - global_position
-		#var dist = max(to_target.length(), 1.0)
-		#var target_vel = (to_target / dist) * HOMING_SPEED
-		#velocity = velocity.lerp(target_vel, HOMING_RESPONSE)
-	#elif nearest and interaction == -1:
-		#var away = global_position - nearest.global_position
-		#var d = max(away.length(), 1.0)
-		#var target_vel = (away / d) * REPEL_SPEED
-		#velocity = velocity.lerp(target_vel, HOMING_RESPONSE)
-	#else:
-		#velocity.y += GRAVITY * delta
+		print(target_velocity)
+		velocity = velocity.lerp(target_velocity, HOMING_RESPONSE)
 
 	move_and_slide()
 
