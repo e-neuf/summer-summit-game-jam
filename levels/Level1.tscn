@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://rid3t6xsrtbw"]
+
+[ext_resource type="Script" uid="uid://d3fao5trb7wml" path="res://scripts/magentic_poles.gd" id="1_32mhh"]
+[ext_resource type="Script" uid="uid://b6p2hnymjm57v" path="res://scripts/main_character.gd" id="2_ohbkr"]
+
+[node name="Node2D" type="Node2D" unique_id=1649957301]
+
+[node name="Magentic Poles" type="Area2D" parent="." unique_id=1053544049]
+script = ExtResource("1_32mhh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Magentic Poles" unique_id=1822912815]
+
+[node name="Main Character" type="CharacterBody2D" parent="." unique_id=616493447]
+script = ExtResource("2_ohbkr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Main Character" unique_id=2101268600]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Main Character" unique_id=632063579]
+
+[connection signal="body_entered" from="Magentic Poles" to="Magentic Poles" method="_on_body_entered"]
