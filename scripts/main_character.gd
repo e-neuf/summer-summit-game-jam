@@ -44,7 +44,9 @@ func _physics_process(delta: float) -> void:
 		flip_cooldown -= delta
 
 	if Input.is_action_just_pressed("flip_polarity") and flip_cooldown <= 0.0:
+		print(polarity);
 		polarity *= -1
+		print(polarity);
 		flip_cooldown = FLIP_COOLDOWN
 		_update_visual()
 
@@ -61,6 +63,8 @@ func _physics_process(delta: float) -> void:
 	var interaction = 0
 	if nearest:
 		interaction = -(nearest.polarity * polarity)  #+1 attract, -1 repel
+		print(interaction);
+		print(nearest.polarity);
 		var passed: bool = (nearest.kind == nearest.Kind.POST or nearest.kind == nearest.Kind.GOAL) and global_position.x > nearest.global_position.x + PASSED_MARGIN
 		if interaction == 1 and passed:
 			interaction = 0
