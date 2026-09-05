@@ -25,10 +25,13 @@ func register_magnet(m) -> void:
 
 func unregister_magnet(m) -> void:
 	magnets_in_range.erase(m)
+	
 func add_attract_mag(m)-> void:
 	attract_mag_in_range.append(m)
+	
 func kill_attract_mag(m)-> void:
 	attract_mag_in_range.erase(m)
+	
 func _get_color() -> Color:
 	return POSITIVE_COLOR if polarity > 0 else NEGATIVE_COLOR
 
