@@ -1,24 +1,8 @@
 [gd_scene format=3 uid="uid://rid3t6xsrtbw"]
 
 [ext_resource type="PackedScene" uid="uid://c2fjiov5pxmvm" path="res://Object_Scenes[for duplication]/magentic_poles.tscn" id="2_2j4y6"]
-[ext_resource type="Script" uid="uid://b6p2hnymjm57v" path="res://scripts/main_character.gd" id="2_ohbkr"]
 [ext_resource type="Script" uid="uid://ccrrm8jgpodv2" path="res://scripts/background_mood.gd" id="3_bgmood"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_2j4y6"]
-animations = [{
-"frames": [],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": 1,
-"name": &"new_animation",
-"speed": 5.0
-}]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ii6ve"]
-radius = 20.0
+[ext_resource type="PackedScene" uid="uid://cghyvyu2v4e41" path="res://Object_Scenes[for duplication]/main_character.tscn" id="3_ohbkr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ii6ve"]
 size = Vector2(2400, 50)
@@ -49,24 +33,8 @@ position = Vector2(300, 405)
 position = Vector2(564, 288)
 polarity = -1
 
-[node name="Main Character" type="CharacterBody2D" parent="." unique_id=616493447]
+[node name="Main Character" parent="." unique_id=273780980 instance=ExtResource("3_ohbkr")]
 position = Vector2(0, 250)
-script = ExtResource("2_ohbkr")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Main Character" unique_id=632063579]
-sprite_frames = SubResource("SpriteFrames_2j4y6")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Main Character" unique_id=88876540]
-shape = SubResource("CircleShape2D_ii6ve")
-debug_color = Color(0.15, 0.45, 1, 1)
-
-[node name="Label" type="Label" parent="Main Character" unique_id=829664529]
-offset_left = -16.0
-offset_top = -15.0
-offset_right = 24.0
-offset_bottom = 13.0
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=29915134]
 position = Vector2(0, 450)
