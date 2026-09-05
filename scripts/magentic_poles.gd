@@ -56,16 +56,15 @@ func _on_body_exited(body: Node2D) -> void:
 		body.kill_attract_mag(self);
 		
 
-
-
-func _on_mouse_entered() -> void:
-	var in_list=false;
+func check_atrractiveness()-> bool:
 	for m in Global.MC_attract_magnets_in_range:
 		if m==self:
-			in_list=true;
-			pass
-	if in_list:
-		pass # add glow function, i lowkey dont know how to make glow effect
+			return true
+	
+	return false
+
+func _on_mouse_entered() -> void:
+	var in_list=check_atrractiveness() # add glow function, i lowkey dont know how to make glow effect
 	##see if self is in the global list
 	##if is, glow?? and set a variable to attractable.
 	## will need a mouse clicked.
@@ -80,3 +79,7 @@ func _on_mouse_exited() -> void:
 func _on_self_clicked(viewport: Node, event: InputEvent, shape_idx: int):
 	if event.is_action_pressed("mouse_click"):
 		print("help"+ self.name)
+		if(check_atrractiveness() ==true):
+			print("I am attractive")
+			if Global.Main_character.has_method("attraction"):
+				Global.Main_character.attraction(self);

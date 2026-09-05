@@ -32,7 +32,7 @@ position = Vector2(302, 376)
 polarity = -1
 
 [node name="Main Character" parent="." index="3" unique_id=273780980 instance=ExtResource("4_fli3c")]
-position = Vector2(383, 348)
+position = Vector2(301, 333)
 
 [node name="Floor" type="StaticBody2D" parent="." index="4" unique_id=336076818]
 position = Vector2(0, 450)
@@ -41,11 +41,10 @@ position = Vector2(0, 450)
 shape = SubResource("RectangleShape2D_4uic7")
 
 [node name="Magentic Poles3" parent="." index="5" unique_id=1459443249 instance=ExtResource("3_3d6os")]
-position = Vector2(397, 264)
-polarity = -1
+position = Vector2(389, 238)
 
 [node name="Magentic Poles" parent="." index="6" unique_id=1551102258 instance=ExtResource("3_3d6os")]
-position = Vector2(490, 373)
+position = Vector2(487, 368)
 polarity = -1
 
 [connection signal="input_event" from="Magentic Poles" to="Magentic Poles" method="_on_input_event"]

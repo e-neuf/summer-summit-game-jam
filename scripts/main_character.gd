@@ -33,6 +33,7 @@ func _get_color() -> Color:
 	return POSITIVE_COLOR if polarity > 0 else NEGATIVE_COLOR
 
 func _ready() -> void:
+	Global.Main_character=self
 	_update_visual()
 
 func _draw() -> void:
@@ -42,6 +43,14 @@ func _update_visual() -> void:
 	$Label.text = "+" if polarity > 0 else "−"
 	$Label.modulate = _get_color()
 	queue_redraw()
+	
+func attraction(m)-> void:
+	var target = m.global_position + Vector2(HOMING_LEAD, 0)
+	var to_target = target - global_position
+	var dist = max(to_target.length(), 1.0)
+	var target_vel = (to_target / dist) * HOMING_SPEED
+	velocity = velocity.lerp(target_vel, HOMING_RESPONSE)
+	move_and_slide()
 
 func _physics_process(delta: float) -> void:
 	if flip_cooldown > 0.0:
@@ -62,6 +71,7 @@ func _physics_process(delta: float) -> void:
 			continue
 		else:
 			var interaction= 0
+			#print(mag.name)
 			interaction= -(mag.polarity * polarity)
 			print(mag.polarity)
 			print(polarity)
@@ -74,6 +84,8 @@ func _physics_process(delta: float) -> void:
 				#program a stop condition
 			else:
 				add_attract_mag(mag)
+				for m in attract_mag_in_range:
+					print(m.name)
 	
 	#when the player clicks on the attract,you can get them to run the attract function, which is what manjari coded.
 				
