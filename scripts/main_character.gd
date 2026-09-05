@@ -61,7 +61,6 @@ func _physics_process(delta: float) -> void:
 		if not is_instance_valid(mag):
 			continue
 		else:
-			print(mag.name)
 			if(mag.polarity==polarity):
 				print("Being repelled by %s" % mag.name)
 				var away = global_position - mag.global_position
@@ -72,7 +71,8 @@ func _physics_process(delta: float) -> void:
 	if (Global.Current_Attraction != null):
 		print("Being attracted by %s" % Global.Current_Attraction.name)
 		var to_target = Global.Current_Attraction.global_position - global_position
-		if (to_target.length() < 0.1):
+		# If close enough to the center of the magnet or out of the magnet's range, stop attraction
+		if (to_target.length() < 0.1 || Global.MC_magnets_in_range.rfind(Global.Current_Attraction) == -1):
 			print("No longer attracted to it")
 			Global.Current_Attraction = null
 			target_velocity = Vector2.ZERO
