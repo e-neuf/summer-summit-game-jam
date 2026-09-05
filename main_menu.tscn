@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://2mbt44uqnotu"]
+
+[ext_resource type="Script" uid="uid://dhwsju78lsmi7" path="res://scripts/main_menu.gd" id="1_06t4h"]
+
+[node name="Control" type="Control" unique_id=872702326]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_06t4h")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1585216947]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1491515388]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=126964370]
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1292504903]
+unique_name_in_owner = true
+layout_mode = 2
+text = "PLAY"
+
+[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1331812244]
+unique_name_in_owner = true
+layout_mode = 2
+text = "QUIT"
