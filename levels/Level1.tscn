@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://rid3t6xsrtbw"]
+[gd_scene format=3 uid="uid://bruosa60vusn0"]
 
 [ext_resource type="PackedScene" uid="uid://c2fjiov5pxmvm" path="res://Object_Scenes[for duplication]/magentic_poles.tscn" id="2_2j4y6"]
 [ext_resource type="Script" uid="uid://ccrrm8jgpodv2" path="res://scripts/background_mood.gd" id="3_bgmood"]
@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ii6ve"]
 size = Vector2(2400, 50)
 
-[node name="Node2D" type="Node2D" unique_id=1649957301]
+[node name="Node2D2" type="Node2D" unique_id=1649957301]
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=343986801]
 layer = -10
