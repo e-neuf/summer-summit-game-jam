@@ -22,6 +22,7 @@ func _ready() -> void:
 	add_to_group("magnets")
 	$Label.text = "+" if polarity > 0 else "−"
 	$Label.modulate = _get_color()
+	self.input_event.connect(_on_self_clicked)
 	if $CollisionShape2D.shape:
 		$CollisionShape2D.shape.radius = field_radius
 	queue_redraw()
@@ -73,16 +74,9 @@ func _on_mouse_entered() -> void:
 func _on_mouse_exited() -> void:
 	pass # Replace with function body.
 	
-
-
-
-
-
-
-
-
-
-
-func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+#func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	#if event.is_action_pressed("mouse_click"):
+		#print("help")
+func _on_self_clicked(viewport: Node, event: InputEvent, shape_idx: int):
 	if event.is_action_pressed("mouse_click"):
-		print("help")
+		print("help"+ self.name)

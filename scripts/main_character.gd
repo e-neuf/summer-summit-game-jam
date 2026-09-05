@@ -33,6 +33,7 @@ func _get_color() -> Color:
 	return POSITIVE_COLOR if polarity > 0 else NEGATIVE_COLOR
 
 func _ready() -> void:
+	Global.Main_ch
 	_update_visual()
 
 func _draw() -> void:
@@ -63,6 +64,9 @@ func _physics_process(delta: float) -> void:
 		else:
 			var interaction= 0
 			interaction= -(mag.polarity * polarity)
+			print(mag.polarity)
+			print(polarity)
+			print(interaction)
 			if(interaction==-1):
 				var away = global_position - mag.global_position
 				var d = max(away.length(), 1.0)

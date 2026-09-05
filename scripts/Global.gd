@@ -4,3 +4,4 @@ extends Node
 
 var MC_magnets_in_range:Array=[]
 var MC_attract_magnets_in_range: Array=[]
+var Main_character=0;

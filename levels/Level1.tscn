@@ -26,15 +26,12 @@ mouse_filter = 2
 color = Color(0.06, 0.05, 0.06, 1)
 script = ExtResource("3_bgmood")
 
-[node name="Magentic Poles" parent="." unique_id=1547105525 instance=ExtResource("2_2j4y6")]
-position = Vector2(250, 385)
-
 [node name="Magentic Poles2" parent="." unique_id=955959510 instance=ExtResource("2_2j4y6")]
-position = Vector2(564, 288)
+position = Vector2(302, 376)
 polarity = -1
 
 [node name="Main Character" parent="." unique_id=273780980 instance=ExtResource("3_ohbkr")]
-position = Vector2(143, 367)
+position = Vector2(383, 348)
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=29915134]
 position = Vector2(0, 450)
@@ -43,7 +40,11 @@ position = Vector2(0, 450)
 shape = SubResource("RectangleShape2D_ii6ve")
 
 [node name="Magentic Poles3" parent="." unique_id=875573576 instance=ExtResource("2_2j4y6")]
-position = Vector2(159, 284)
+position = Vector2(397, 264)
+polarity = -1
+
+[node name="Magentic Poles" parent="." unique_id=1547105525 instance=ExtResource("2_2j4y6")]
+position = Vector2(490, 373)
 polarity = -1
 
 [connection signal="input_event" from="Magentic Poles" to="Magentic Poles" method="_on_input_event"]
