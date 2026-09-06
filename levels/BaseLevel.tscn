@@ -116,7 +116,7 @@ ring_color = Color(0.2314, 0.4824, 1, 0.08)
 radius = 140.0
 pulse = false
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=568116265]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=113972842]
 stream = ExtResource("2_yjrvk")
 autoplay = true
 

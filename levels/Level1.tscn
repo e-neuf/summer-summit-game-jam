@@ -12,24 +12,8 @@
 [ext_resource type="PackedScene" path="res://objects/wall.tscn" id="8_wall"]
 [ext_resource type="PackedScene" path="res://objects/checkpoint.tscn" id="10_checkpoint"]
 [ext_resource type="PackedScene" uid="uid://dvogxy0a5wu2w" path="res://objects/ceiling.tscn" id="11_kdcll"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j4pg1"]
-content_margin_left = 14.0
-content_margin_top = 8.0
-content_margin_right = 12.0
-content_margin_bottom = 8.0
-bg_color = Color(0.03, 0.03, 0.04, 0.88)
-border_width_left = 3
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.85, 0.55, 0.25, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-shadow_color = Color(0.85, 0.55, 0.25, 0.45)
-shadow_size = 10
+[ext_resource type="PackedScene" uid="uid://c3d4iqvn18nat" path="res://objects/enemy.tscn" id="13_nu2w0"]
+[ext_resource type="PackedScene" uid="uid://d4ix0j77l2qwy" path="res://objects/Larger_Floor.tscn" id="14_rv5to"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nu2w0"]
 content_margin_left = 14.0
@@ -59,12 +43,12 @@ border_width_left = 3
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(0.2314, 0.4824, 1, 1)
+border_color = Color(0.85, 0.55, 0.25, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-shadow_color = Color(0.2314, 0.4824, 1, 0.45)
+shadow_color = Color(0.85, 0.55, 0.25, 0.45)
 shadow_size = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j4mar"]
@@ -95,12 +79,12 @@ border_width_left = 3
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(0.85, 0.55, 0.25, 1)
+border_color = Color(0.2314, 0.4824, 1, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-shadow_color = Color(0.85, 0.55, 0.25, 0.45)
+shadow_color = Color(0.2314, 0.4824, 1, 0.45)
 shadow_size = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6gurj"]
@@ -149,6 +133,24 @@ border_width_left = 3
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
+border_color = Color(0.85, 0.55, 0.25, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.85, 0.55, 0.25, 0.45)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ccxey"]
+content_margin_left = 14.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+bg_color = Color(0.03, 0.03, 0.04, 0.88)
+border_width_left = 3
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
 border_color = Color(0.2314, 0.4824, 1, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
@@ -164,7 +166,7 @@ offset_left = 140.0
 offset_top = 419.0
 offset_right = 231.0
 offset_bottom = 459.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_j4pg1")
+theme_override_styles/panel = SubResource("StyleBoxFlat_nu2w0")
 text = "Move"
 icon = "↔"
 
@@ -173,7 +175,7 @@ offset_left = 314.0
 offset_top = 353.0
 offset_right = 402.0
 offset_bottom = 393.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_nu2w0")
+theme_override_styles/panel = SubResource("StyleBoxFlat_rv5to")
 text = "Jump"
 icon = "↑"
 
@@ -182,7 +184,7 @@ offset_left = 489.0
 offset_top = 397.0
 offset_right = 772.0
 offset_bottom = 460.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_rv5to")
+theme_override_styles/panel = SubResource("StyleBoxFlat_j4mar")
 text = "Opposite charges attract!
 Press space to flip your polarity."
 icon = "●"
@@ -193,7 +195,7 @@ offset_left = 807.0
 offset_top = 353.0
 offset_right = 1032.0
 offset_bottom = 416.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_j4mar")
+theme_override_styles/panel = SubResource("StyleBoxFlat_1bxb8")
 text = "Press 'X' to pull yourself
 to the magnet"
 icon = "●"
@@ -204,7 +206,7 @@ offset_left = 1343.0
 offset_top = 300.0
 offset_right = 1626.0
 offset_bottom = 388.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_1bxb8")
+theme_override_styles/panel = SubResource("StyleBoxFlat_6gurj")
 text = "While pulled to a magnet, press
 'space' to flip your polarity and
 push yourself away"
@@ -215,7 +217,7 @@ offset_left = 1602.0
 offset_top = 100.0
 offset_right = 1918.0
 offset_bottom = 188.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_6gurj")
+theme_override_styles/panel = SubResource("StyleBoxFlat_0bnej")
 text = "Press the arrow keys while you
 press 'space' to control the direction
 you're pushed to"
@@ -289,7 +291,7 @@ offset_left = 3230.0
 offset_top = 380.0
 offset_right = 3518.0
 offset_bottom = 443.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_0bnej")
+theme_override_styles/panel = SubResource("StyleBoxFlat_audcl")
 text = "Match the triangle's color
 to walk straight through, or die."
 icon = "▲"
@@ -323,7 +325,7 @@ position = Vector2(4811, 555)
 scale = Vector2(2.75, 2.75)
 
 [node name="Floor19" parent="." index="35" unique_id=587437269 instance=ExtResource("3_cr8f5")]
-position = Vector2(5051, 555)
+position = Vector2(5052, 554.00006)
 scale = Vector2(2.75, 2.75)
 
 [node name="Magnetic Pole6" parent="." index="36" unique_id=1055395486 instance=ExtResource("2_2j4y6")]
@@ -345,7 +347,7 @@ offset_left = 4300.0
 offset_top = 150.0
 offset_right = 4528.0
 offset_bottom = 213.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_audcl")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ccxey")
 text = "Get pulled up, then flip
 to launch over the wall."
 icon = "↗"
@@ -354,15 +356,18 @@ accent = 1
 [node name="Wall" parent="." index="41" unique_id=475008039 instance=ExtResource("8_wall")]
 position = Vector2(4380, 374)
 
+[node name="Wall" parent="Wall" index="1" unique_id=1973482471 instance=ExtResource("8_wall")]
+position = Vector2(2488, 7)
+
 [node name="PassThrough_Blue_Tri2" parent="." index="42" unique_id=1464371840 instance=ExtResource("6_cr8f5")]
 position = Vector2(4550, 506)
 
 [node name="Magnetic Pole9" parent="." index="43" unique_id=1248124469 instance=ExtResource("2_2j4y6")]
-position = Vector2(4900, 380)
+position = Vector2(4899, 378)
 kind = 3
 
 [node name="Door" parent="." index="44" unique_id=2139156745 instance=ExtResource("5_dkril")]
-position = Vector2(5113, 495)
+position = Vector2(9583, 461)
 
 [node name="Main Character" parent="." index="45" unique_id=273780980 instance=ExtResource("3_ohbkr")]
 position = Vector2(159, 524)
@@ -371,4 +376,136 @@ position = Vector2(159, 524)
 
 [node name="DEAD ZONE" parent="." index="47" unique_id=933869699 instance=ExtResource("5_vi6ws")]
 position = Vector2(1760, 665)
-scale = Vector2(10, 1)
+scale = Vector2(443.88016, 1.8394516)
+
+[node name="Checkpoint2" parent="." index="48" unique_id=1733402299 instance=ExtResource("10_checkpoint")]
+position = Vector2(5212, 227)
+
+[node name="Magnetic Pole10" parent="." index="49" unique_id=1609294302 instance=ExtResource("2_2j4y6")]
+position = Vector2(5663, 405)
+
+[node name="Floor20" parent="." index="50" unique_id=1856879194 instance=ExtResource("3_cr8f5")]
+position = Vector2(5467.0005, 552)
+scale = Vector2(2.75, 2.75)
+
+[node name="Floor21" parent="." index="51" unique_id=1681736955 instance=ExtResource("3_cr8f5")]
+position = Vector2(5707, 552)
+scale = Vector2(2.75, 2.75)
+
+[node name="Enemy" parent="." index="52" unique_id=1418531000 instance=ExtResource("13_nu2w0")]
+position = Vector2(6166, 473)
+
+[node name="LargerFloor" parent="." index="53" unique_id=1117859385 instance=ExtResource("14_rv5to")]
+position = Vector2(6150.0005, 546.00006)
+scale = Vector2(2.29624, 5.2905188)
+
+[node name="Floor22" parent="." index="54" unique_id=47378569 instance=ExtResource("3_cr8f5")]
+position = Vector2(5260, 555)
+scale = Vector2(2.0379026, 2.7000656)
+
+[node name="Magnetic Pole11" parent="." index="55" unique_id=137218872 instance=ExtResource("2_2j4y6")]
+position = Vector2(5932, 369)
+polarity = -1
+
+[node name="Magnetic Pole12" parent="." index="56" unique_id=765703265 instance=ExtResource("2_2j4y6")]
+position = Vector2(6102, 270)
+
+[node name="Magnetic Pole13" parent="." index="57" unique_id=1845817253 instance=ExtResource("2_2j4y6")]
+position = Vector2(6257, 283)
+
+[node name="Magnetic Pole14" parent="." index="58" unique_id=540631613 instance=ExtResource("2_2j4y6")]
+position = Vector2(6394, 404)
+polarity = -1
+
+[node name="Floor23" parent="." index="59" unique_id=1310272036 instance=ExtResource("3_cr8f5")]
+position = Vector2(6542.0005, 562.00006)
+scale = Vector2(2.75, 2.75)
+
+[node name="Floor24" parent="." index="60" unique_id=530564151 instance=ExtResource("3_cr8f5")]
+position = Vector2(6781, 562)
+scale = Vector2(2.75, 2.75)
+
+[node name="PassThrough_Red_Tri2" parent="." index="61" unique_id=873726567 instance=ExtResource("7_redtri")]
+position = Vector2(6532, 509)
+
+[node name="Magnetic Pole15" parent="." index="62" unique_id=642953190 instance=ExtResource("2_2j4y6")]
+position = Vector2(6740, 405)
+polarity = -1
+
+[node name="Magnetic Pole16" parent="." index="63" unique_id=435601503 instance=ExtResource("2_2j4y6")]
+position = Vector2(6876, 113)
+
+[node name="Floor26" parent="." index="64" unique_id=1330976746 instance=ExtResource("3_cr8f5")]
+position = Vector2(7453, 565)
+rotation = 3.1415925
+scale = Vector2(7.3249903, -3.5396428)
+
+[node name="Floor25" parent="." index="65" unique_id=894342502 instance=ExtResource("3_cr8f5")]
+position = Vector2(7020, 563.00006)
+scale = Vector2(2.75, 2.75)
+
+[node name="PassThrough_Blue_Tri" parent="." index="66" unique_id=10440938 instance=ExtResource("6_cr8f5")]
+position = Vector2(7128, 505)
+
+[node name="Wall2" parent="." index="67" unique_id=526864133 instance=ExtResource("8_wall")]
+position = Vector2(7419, 382)
+
+[node name="Magnetic Pole17" parent="." index="68" unique_id=1605380451 instance=ExtResource("2_2j4y6")]
+position = Vector2(7299, 407)
+
+[node name="LargerFloor2" parent="." index="69" unique_id=1048452846 instance=ExtResource("14_rv5to")]
+position = Vector2(850.95605, -1.7046928e-05)
+scale = Vector2(-1.2338898, 1.6561432)
+
+[node name="LargerFloor3" parent="." index="70" unique_id=998904869 instance=ExtResource("14_rv5to")]
+position = Vector2(8091, 589)
+scale = Vector2(2.29624, 5.2905188)
+
+[node name="Enemy2" parent="." index="71" unique_id=1088398446 instance=ExtResource("13_nu2w0")]
+position = Vector2(7994, 519)
+
+[node name="LargerFloor4" parent="." index="72" unique_id=1252856329 instance=ExtResource("14_rv5to")]
+position = Vector2(7989.0005, 256)
+scale = Vector2(2.29624, 5.2905188)
+
+[node name="Magnetic Pole18" parent="." index="73" unique_id=131467357 instance=ExtResource("2_2j4y6")]
+position = Vector2(7743.962, 146.26071)
+
+[node name="PassThrough_Red_Tri3" parent="." index="74" unique_id=1717460880 instance=ExtResource("7_redtri")]
+position = Vector2(8031, 219)
+
+[node name="Magnetic Pole19" parent="." index="75" unique_id=291024757 instance=ExtResource("2_2j4y6")]
+position = Vector2(7550, 426)
+polarity = -1
+
+[node name="Magnetic Pole20" parent="." index="76" unique_id=181570277 instance=ExtResource("2_2j4y6")]
+position = Vector2(8345, 306)
+
+[node name="Floor27" parent="." index="77" unique_id=557390215 instance=ExtResource("3_cr8f5")]
+position = Vector2(8681, 531)
+rotation = 3.1415925
+scale = Vector2(7.3249903, -3.5396428)
+
+[node name="Magnetic Pole21" parent="." index="78" unique_id=997320663 instance=ExtResource("2_2j4y6")]
+position = Vector2(8853, 299)
+polarity = -1
+
+[node name="Wall3" parent="." index="79" unique_id=2052656409 instance=ExtResource("8_wall")]
+position = Vector2(8975, 344)
+
+[node name="PassThrough_Red_Tri4" parent="." index="80" unique_id=1696636377 instance=ExtResource("7_redtri")]
+position = Vector2(8608, 466)
+
+[node name="Floor28" parent="." index="81" unique_id=1497171483 instance=ExtResource("3_cr8f5")]
+position = Vector2(9314, 531)
+rotation = 3.1415925
+scale = Vector2(7.3249903, -3.5396428)
+
+[node name="PassThrough_Red_Tri5" parent="." index="82" unique_id=787011912 instance=ExtResource("7_redtri")]
+position = Vector2(9446, 475)
+
+[node name="Magnetic Pole22" parent="." index="83" unique_id=1246108917 instance=ExtResource("2_2j4y6")]
+position = Vector2(9286, 380)
+
+[node name="PassThrough_Blue_Tri3" parent="." index="84" unique_id=2078830763 instance=ExtResource("6_cr8f5")]
+position = Vector2(9102, 471)
