@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://b88gsg0supnpu" path="res://objects/checkpoint.tscn" id="10_checkpoint"]
 [ext_resource type="PackedScene" uid="uid://dvogxy0a5wu2w" path="res://objects/ceiling.tscn" id="11_kdcll"]
 [ext_resource type="PackedScene" uid="uid://c3d4iqvn18nat" path="res://objects/enemy.tscn" id="13_nu2w0"]
-[ext_resource type="PackedScene" uid="uid://d4ix0j77l2qwy" path="res://objects/Larger_Floor.tscn" id="14_rv5to"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nu2w0"]
 content_margin_left = 14.0
@@ -337,16 +336,12 @@ scale = Vector2(2.75, 2.75)
 position = Vector2(2274, 555)
 scale = Vector2(2.75, 2.75)
 
-[node name="Floor9" parent="." index="19" unique_id=876219976 instance=ExtResource("3_cr8f5")]
-position = Vector2(2514.0002, 555.00006)
-scale = Vector2(2.75, 2.75)
-
 [node name="Floor10" parent="." index="20" unique_id=869752004 instance=ExtResource("3_cr8f5")]
-position = Vector2(2754.0002, 555)
+position = Vector2(2904.0002, 555)
 scale = Vector2(2.75, 2.75)
 
 [node name="Floor11" parent="." index="21" unique_id=616203772 instance=ExtResource("3_cr8f5")]
-position = Vector2(2994, 555.00006)
+position = Vector2(3144, 555.00006)
 scale = Vector2(2.75, 2.75)
 
 [node name="Magnetic Pole" parent="." index="22" unique_id=1547105525 instance=ExtResource("2_2j4y6")]
@@ -410,17 +405,9 @@ scale = Vector2(2.75, 2.75)
 position = Vector2(4331, 555)
 scale = Vector2(2.75, 2.75)
 
-[node name="Floor17" parent="." index="35" unique_id=343305063 instance=ExtResource("3_cr8f5")]
-position = Vector2(4571, 555)
-scale = Vector2(2.75, 2.75)
-
 [node name="Floor18" parent="." index="36" unique_id=1902768098 instance=ExtResource("3_cr8f5")]
-position = Vector2(4811, 555)
-scale = Vector2(2.75, 2.75)
-
-[node name="Floor19" parent="." index="37" unique_id=587437269 instance=ExtResource("3_cr8f5")]
-position = Vector2(5052, 554.00006)
-scale = Vector2(2.75, 2.75)
+position = Vector2(4839.25, 555)
+scale = Vector2(4.651163, 2.75)
 
 [node name="Magnetic Pole6" parent="." index="38" unique_id=1055395486 instance=ExtResource("2_2j4y6")]
 position = Vector2(3550, 380)
@@ -430,7 +417,7 @@ polarity = -1
 position = Vector2(3750, 506)
 
 [node name="Magnetic Pole7" parent="." index="40" unique_id=1397183393 instance=ExtResource("2_2j4y6")]
-position = Vector2(3980, 250)
+position = Vector2(4120, 250)
 polarity = -1
 
 [node name="Magnetic Pole8" parent="." index="41" unique_id=1652457729 instance=ExtResource("2_2j4y6")]
@@ -454,7 +441,7 @@ position = Vector2(4380, 374)
 position = Vector2(6868, 381)
 
 [node name="PassThrough_Blue_Tri2" parent="." index="45" unique_id=1464371840 instance=ExtResource("6_cr8f5")]
-position = Vector2(4550, 506)
+position = Vector2(5550, 506)
 
 [node name="Magnetic Pole9" parent="." index="46" unique_id=1248124469 instance=ExtResource("2_2j4y6")]
 position = Vector2(4899, 378)
@@ -467,11 +454,11 @@ position = Vector2(5212, 227)
 position = Vector2(5663, 405)
 
 [node name="Floor20" parent="." index="49" unique_id=1856879194 instance=ExtResource("3_cr8f5")]
-position = Vector2(5467.0005, 552)
+position = Vector2(5547.0005, 552)
 scale = Vector2(2.75, 2.75)
 
 [node name="Floor21" parent="." index="50" unique_id=1681736955 instance=ExtResource("3_cr8f5")]
-position = Vector2(5707, 552)
+position = Vector2(5787, 552)
 scale = Vector2(2.75, 2.75)
 
 [node name="EnemyCallout" parent="." index="51" unique_id=1939322205 instance=ExtResource("6_tut01")]
@@ -485,11 +472,11 @@ and kill you if you get too close!"
 icon = "■"
 
 [node name="Enemy" parent="." index="52" unique_id=1418531000 instance=ExtResource("13_nu2w0")]
-position = Vector2(6115, 484)
+position = Vector2(5850, 500)
 
-[node name="LargerFloor" parent="." index="53" unique_id=1117859385 instance=ExtResource("14_rv5to")]
+[node name="LargerFloor" parent="." index="53" unique_id=1117859385 instance=ExtResource("3_cr8f5")]
 position = Vector2(6150.0005, 546.00006)
-scale = Vector2(2.29624, 5.2905188)
+scale = Vector2(6.835319, 1.910465)
 
 [node name="Floor22" parent="." index="54" unique_id=47378569 instance=ExtResource("3_cr8f5")]
 position = Vector2(5260, 555)
@@ -545,16 +532,13 @@ position = Vector2(7419, 382)
 [node name="Magnetic Pole17" parent="." index="68" unique_id=1605380451 instance=ExtResource("2_2j4y6")]
 position = Vector2(7299, 407)
 
-[node name="LargerFloor3" parent="." index="69" unique_id=998904869 instance=ExtResource("14_rv5to")]
+[node name="LargerFloor3" parent="." index="69" unique_id=998904869 instance=ExtResource("3_cr8f5")]
 position = Vector2(8091, 589)
-scale = Vector2(2.29624, 5.2905188)
+scale = Vector2(6.835319, 1.910465)
 
-[node name="Enemy2" parent="." index="70" unique_id=1088398446 instance=ExtResource("13_nu2w0")]
-position = Vector2(7994, 519)
-
-[node name="LargerFloor4" parent="." index="71" unique_id=1252856329 instance=ExtResource("14_rv5to")]
+[node name="LargerFloor4" parent="." index="71" unique_id=1252856329 instance=ExtResource("3_cr8f5")]
 position = Vector2(7989.0005, 256)
-scale = Vector2(2.29624, 5.2905188)
+scale = Vector2(6.835319, 1.910465)
 
 [node name="Magnetic Pole18" parent="." index="72" unique_id=131467357 instance=ExtResource("2_2j4y6")]
 position = Vector2(7743.962, 146.26071)
