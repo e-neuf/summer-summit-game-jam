@@ -85,8 +85,6 @@ func _physics_process(delta: float) -> void:
 
 	var target_velocity = Vector2.ZERO
 
-	var nearest = null
-	var nearest_dist = INF
 	var being_repelled = false
 	# program that if they are all in range, and they repell you, otherwise you can click on them to attract to them.
 	for mag in Global.MC_magnets_in_range:
@@ -94,7 +92,7 @@ func _physics_process(delta: float) -> void:
 			continue
 		else:
 			if (mag.polarity == polarity):
-				print("Being repelled by %s" % mag.name)
+				#print("Being repelled by %s" % mag.name)
 				being_repelled = true
 				var away = mag.global_position.direction_to(global_position)
 				var direction: Vector2
@@ -107,9 +105,9 @@ func _physics_process(delta: float) -> void:
 				target_velocity += direction * REPEL_SPEED
 
 	if (Global.Current_Attraction != null):
-		print("Being attracted by %s" % Global.Current_Attraction.name)
+		#print("Being attracted by %s" % Global.Current_Attraction.name)
 		if (Global.MC_magnets_in_range.rfind(Global.Current_Attraction) == -1):
-			print("No longer attracted to it")
+			#print("No longer attracted to it")
 			Global.Current_Attraction = null
 		else:
 			var direction = global_position.direction_to(Global.Current_Attraction.global_position)
@@ -131,15 +129,6 @@ func _physics_process(delta: float) -> void:
 	
 	
 	move_and_slide()
-
-	if nearest and nearest_dist < 25:
-		if (
-			(nearest.kind == nearest.Kind.HAZARD or nearest.kind == nearest.Kind.ENEMY)
-			and polarity != nearest.polarity
-		):
-			get_tree().reload_current_scene()
-		elif nearest.kind == nearest.Kind.GOAL and polarity != nearest.polarity:
-			print("LEVEL COMPLETE")
 
 
 func _exit_tree() -> void:
