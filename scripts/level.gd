@@ -49,11 +49,20 @@ func on_player_registered() -> void:
 
 
 func on_polarity_flip(pol: int) -> void:
-	if (pol > 0):
-		negative_song_progress = $AudioStreamPlayer2D.get_playback_position()
-	else:
+	# Save previous song progress
+	if (pol < 0):
 		positive_song_progress = $AudioStreamPlayer2D.get_playback_position()
+		var stream_length = $AudioStreamPlayer2D.stream.get_length() if $AudioStreamPlayer2D.stream else 0.0
+		positive_song_progress = clamp(positive_song_progress, 0.0, stream_length)
+		print("Positive song progress: %f | Total: %f" % [positive_song_progress, stream_length])
+	else:
+		negative_song_progress = $AudioStreamPlayer2D.get_playback_position()
+		var stream_length = $AudioStreamPlayer2D.stream.get_length() if $AudioStreamPlayer2D.stream else 0.0
+		negative_song_progress = clamp(negative_song_progress, 0.0, stream_length)
+		print("Negative song progress: %f | Total: %f" % [negative_song_progress, stream_length])
+	
+	# Switch to new song
 	$AudioStreamPlayer2D.stop()
 	$AudioStreamPlayer2D.stream = negative_song if pol < 0 else positive_song
-	$AudioStreamPlayer2D.play(positive_song_progress if pol > 0 else negative_song_progress)
+	$AudioStreamPlayer2D.play(negative_song_progress if pol < 0 else positive_song_progress)
 	
