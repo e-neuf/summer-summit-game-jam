@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://b46qdd0m57h1q" path="res://scripts/level.gd" id="1_e1enx"]
 [ext_resource type="Script" uid="uid://ccrrm8jgpodv2" path="res://scripts/background_mood.gd" id="2_lf7d8"]
-[ext_resource type="AudioStream" uid="uid://ctaiujqvfq0eq" path="res://assets/music/Somewhere Sunny.mp3" id="2_yjrvk"]
 [ext_resource type="Script" uid="uid://dhscvoq6gvikx" path="res://levels/horizontal_camera.gd" id="3_b38sr"]
 [ext_resource type="PackedScene" uid="uid://2ytlxtccn8js" path="res://objects/game_over_panel.tscn" id="4_greed"]
 [ext_resource type="PackedScene" path="res://objects/polarity_hud.tscn" id="4_phud1"]
@@ -138,10 +137,6 @@ anchor_bottom = 0.92
 ring_color = Color(0.2314, 0.4824, 1, 0.08)
 radius = 140.0
 pulse = false
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=113972842]
-stream = ExtResource("2_yjrvk")
-autoplay = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=484005424]
 anchor_mode = 0

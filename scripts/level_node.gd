@@ -48,4 +48,5 @@ func _draw() -> void:
 
 
 func _on_pressed() -> void:
+	MusicHandler.stop()
 	get_tree().change_scene_to_file(target_scene)
