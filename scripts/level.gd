@@ -14,7 +14,7 @@ func _ready() -> void:
 	Global.Level_Registered.emit()
 	
 	%MainMenuButton.pressed.connect(return_to_menu)
-	%RestartButton.pressed.connect(restart_level)
+	%RestartButton.pressed.connect(restart_level.bind(true))
 	
 	if Global.Main_character:
 		on_player_registered()
@@ -32,13 +32,15 @@ func return_to_menu() -> void:
 
 
 # Resets the player's position and polarity
-func restart_level() -> void:
+func restart_level(from_start: bool = false) -> void:
 	%GameOverPanel.hide()
+	Global.Level_Over = false
 	Global.Current_Attraction = null
-	Global.Main_character.reset_self()
+	Global.Main_character.reset_self(from_start)
 	
 	
 func game_over() -> void:
+	Global.Level_Over = true
 	%GameOverPanel.show()
 	
 	
