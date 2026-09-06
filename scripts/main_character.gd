@@ -3,6 +3,7 @@ extends CharacterBody2D
 const GRAVITY := 600.0
 const JUMP_VELOCITY := -460.0
 const ACCEL := 950.0 #how fast horizontal speed goes up and down
+const DECCELERATION_RATE := 0.06
 const MAX_SPEED := 230.0
 const HOMING_SPEED := 260.0 #top speed while being pulled toward an attracting magnet
 const HOMING_RESPONSE := 0.12 #how quickly velocity blends towards the pull (lower makes it floatier and higher would make it snappier)
@@ -82,33 +83,23 @@ func _physics_process(delta: float) -> void:
 		else:
 			if (mag.polarity == polarity):
 				print("Being repelled by %s" % mag.name)
-				var away = global_position - mag.global_position
-				var d = max(away.length(), 1.0)
-				var target_vel = (away / d) * REPEL_SPEED
-				target_velocity += target_vel
+				var direction = mag.global_position.direction_to(global_position)
+				target_velocity += direction * REPEL_SPEED
 
 	if (Global.Current_Attraction != null):
 		print("Being attracted by %s" % Global.Current_Attraction.name)
-		var to_target = Global.Current_Attraction.global_position - global_position
+		var distance = global_position.distance_to(Global.Current_Attraction.global_position)
 		# If close enough to the center of the magnet or out of the magnet's range, stop attraction
-		if (to_target.length() < 0.1 || Global.MC_magnets_in_range.rfind(Global.Current_Attraction) == -1):
+		if (distance < 0.1 || Global.MC_magnets_in_range.rfind(Global.Current_Attraction) == -1):
 			print("No longer attracted to it")
 			Global.Current_Attraction = null
 			target_velocity = Vector2.ZERO
-			pass
-		var target_vel = to_target.normalized() * HOMING_SPEED
-		target_velocity += target_vel
-
-	if (target_velocity == Vector2.ZERO):
-		var input_dir := Input.get_axis("move_left", "move_right")
-		if input_dir != 0.0:
-			velocity.x = move_toward(velocity.x, input_dir * MAX_SPEED, ACCEL * delta)
+			velocity = Vector2.ZERO
 		else:
-			velocity.x = move_toward(velocity.x, 0.0, ACCEL * delta)
+			var direction = global_position.direction_to(Global.Current_Attraction.global_position)
+			target_velocity += direction * HOMING_SPEED
 
-	else:
-		print(target_velocity)
-		velocity = velocity.lerp(target_velocity, HOMING_RESPONSE)
+	velocity = velocity.lerp(target_velocity, HOMING_RESPONSE if target_velocity != Vector2.ZERO else DECCELERATION_RATE)
 
 	move_and_slide()
 
