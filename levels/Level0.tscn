@@ -15,10 +15,10 @@ layer = -10
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -5.0
-offset_top = 1.0
-offset_right = -5.0
-offset_bottom = 1.0
+offset_left = -3.0
+offset_top = 32.0
+offset_right = -3.0
+offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -26,31 +26,40 @@ color = Color(0.06, 0.05, 0.06, 1)
 script = ExtResource("2_n5jrs")
 
 [node name="Floor" parent="." index="2" unique_id=592601429 instance=ExtResource("3_fli3c")]
-position = Vector2(529, 559)
+position = Vector2(431, 557)
 
-[node name="Floor2" parent="." index="3" unique_id=1564536870 instance=ExtResource("3_fli3c")]
+[node name="Floor6" parent="." index="3" unique_id=1559610409 instance=ExtResource("3_fli3c")]
+position = Vector2(912, 1124)
+
+[node name="Floor5" parent="." index="4" unique_id=487138060 instance=ExtResource("3_fli3c")]
+position = Vector2(135, 560)
+
+[node name="Floor2" parent="." index="5" unique_id=1564536870 instance=ExtResource("3_fli3c")]
 position = Vector2(156, 50)
 
-[node name="Floor3" parent="." index="4" unique_id=1559610409 instance=ExtResource("3_fli3c")]
+[node name="Floor3" parent="." index="6" unique_id=753917304 instance=ExtResource("3_fli3c")]
 position = Vector2(-1.0000153, 291.00003)
 rotation = 1.5807571
 
-[node name="Floor4" parent="." index="5" unique_id=587057396 instance=ExtResource("3_fli3c")]
+[node name="Floor4" parent="." index="7" unique_id=587057396 instance=ExtResource("3_fli3c")]
 position = Vector2(1161, 248)
 rotation = 1.5807571
 
-[node name="Magnetic Pole" parent="." index="6" unique_id=1551102258 instance=ExtResource("3_3d6os")]
-position = Vector2(487, 368)
+[node name="Magnetic Pole" parent="." index="8" unique_id=1551102258 instance=ExtResource("3_3d6os")]
+position = Vector2(622, 475)
 polarity = -1
 
-[node name="Magnetic Pole2" parent="." index="7" unique_id=1547105525 instance=ExtResource("3_3d6os")]
-position = Vector2(246, 362)
+[node name="Magnetic Pole2" parent="." index="9" unique_id=1547105525 instance=ExtResource("3_3d6os")]
+position = Vector2(291, 464)
 polarity = -1
 
-[node name="Magnetic Pole3" parent="." index="8" unique_id=1459443249 instance=ExtResource("3_3d6os")]
-position = Vector2(238, 200)
+[node name="Magnetic Pole3" parent="." index="10" unique_id=1459443249 instance=ExtResource("3_3d6os")]
+position = Vector2(456, 376)
 
-[node name="Main Character" parent="." index="9" unique_id=273780980 instance=ExtResource("4_fli3c")]
+[node name="Main Character" parent="." index="11" unique_id=273780980 instance=ExtResource("4_fli3c")]
 position = Vector2(134, 514)
+
+[node name="Floor7" parent="." index="12" unique_id=1066586342 instance=ExtResource("3_fli3c")]
+position = Vector2(801, 557)
 
 [connection signal="input_event" from="Magnetic Pole" to="Magnetic Pole" method="_on_input_event"]
