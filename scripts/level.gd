@@ -35,6 +35,8 @@ func restart_level(from_start: bool = false) -> void:
 	Global.Level_Over = false
 	Global.Current_Attraction = null
 	Global.Main_character.reset_self(from_start)
+	for enemy in get_tree().get_nodes_in_group("enemies"):
+		enemy.reset_self()
 	
 	
 func game_over() -> void:
