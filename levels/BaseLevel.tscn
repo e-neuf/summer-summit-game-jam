@@ -49,38 +49,15 @@ text = "RESTART"
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Control2" type="Control" parent="CanvasLayer" unique_id=828619196]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control2" unique_id=516484604]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -125.0
-offset_top = -58.5
-offset_right = 125.0
-offset_bottom = 58.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="GameOverPanel" parent="CanvasLayer/Control2/CenterContainer" unique_id=868289316 instance=ExtResource("4_greed")]
+[node name="GameOverPanel" parent="CanvasLayer" unique_id=868289316 instance=ExtResource("4_greed")]
 unique_name_in_owner = true
 visible = false
-layout_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=367872863]
 layer = -10
