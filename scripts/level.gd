@@ -11,6 +11,7 @@ var negative_song_progress = 0.0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Global.Level = self
+	Global.Level_Registered.emit()
 	
 	%MainMenuButton.pressed.connect(return_to_menu)
 	%RestartButton.pressed.connect(restart_level)
@@ -32,6 +33,7 @@ func return_to_menu() -> void:
 
 # Resets the player's position and polarity
 func restart_level() -> void:
+	%GameOverPanel.hide()
 	Global.Current_Attraction = null
 	Global.Main_character.reset_self()
 	

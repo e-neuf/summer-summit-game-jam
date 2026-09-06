@@ -1,9 +1,12 @@
 [gd_scene format=3 uid="uid://2ytlxtccn8js"]
 
+[ext_resource type="Script" uid="uid://ub3io11ona5t" path="res://scripts/game_over_panel.gd" id="1_v5pvn"]
+
 [node name="GameOverPanel" type="PanelContainer" unique_id=868289316]
 size_flags_horizontal = 0
 size_flags_vertical = 0
 mouse_filter = 2
+script = ExtResource("1_v5pvn")
 
 [node name="Margin" type="MarginContainer" parent="." unique_id=1610992780]
 layout_mode = 2
@@ -30,9 +33,11 @@ theme_override_constants/separation = 6
 alignment = 1
 
 [node name="MainMenuButton" type="Button" parent="Margin/VBox/VBoxContainer" unique_id=1265284106]
+unique_name_in_owner = true
 layout_mode = 2
 text = "MAIN MENU"
 
 [node name="ReplayButton" type="Button" parent="Margin/VBox/VBoxContainer" unique_id=1293579710]
+unique_name_in_owner = true
 layout_mode = 2
 text = "REPLAY"
