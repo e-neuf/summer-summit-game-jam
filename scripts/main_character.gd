@@ -112,7 +112,14 @@ func _physics_process(delta: float) -> void:
 			velocity.y = 1000
 	elif Input.is_action_just_pressed("jump"):
 		velocity.y += JUMP_VELOCITY
-
+	if(!being_repelled && target_velocity==Vector2.ZERO):
+		var direction := Input.get_axis("move_left", "move_right")
+		if direction != 0.0:
+			velocity.x = move_toward(velocity.x, direction * MAX_SPEED, ACCEL * delta)
+		else:
+			velocity.x = move_toward(velocity.x, 0.0, ACCEL * delta)
+	
+	
 	move_and_slide()
 
 	if nearest and nearest_dist < 25:
