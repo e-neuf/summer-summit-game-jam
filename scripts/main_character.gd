@@ -118,13 +118,10 @@ func _physics_process(delta: float) -> void:
 				var direction: Vector2
 				if launch_boost_timer > 0.0 and not input_dir.is_zero_approx():
 					direction = input_dir
-					print("1")
 				elif not input_dir.is_zero_approx() and input_dir.dot(away) > 0.0:
 					direction = input_dir
-					print("2")
 				else:
 					direction = away
-					print("3")
 				target_velocity += direction * REPEL_SPEED
 			else:
 				# potentially attractive magnet
@@ -143,15 +140,6 @@ func _physics_process(delta: float) -> void:
 		print("Being attracted by %s" % nearest.name)
 		var direction = global_position.direction_to(nearest.global_position)
 		target_velocity += direction * HOMING_SPEED
-
-	#if (Global.Current_Attraction != null):
-		##print("Being attracted by %s" % Global.Current_Attraction.name)
-		#if (Global.MC_magnets_in_range.rfind(Global.Current_Attraction) == -1):
-			##print("No longer attracted to it")
-			#Global.Current_Attraction = null
-		#else:
-			#var direction = global_position.direction_to(Global.Current_Attraction.global_position)
-			#target_velocity += direction * HOMING_SPEED
 
 	velocity = velocity.lerp(target_velocity, HOMING_RESPONSE if target_velocity != Vector2.ZERO else DECCELERATION_RATE)
 
