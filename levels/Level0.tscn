@@ -25,32 +25,32 @@ mouse_filter = 2
 color = Color(0.06, 0.05, 0.06, 1)
 script = ExtResource("2_n5jrs")
 
-[node name="Magentic Poles2" parent="." index="2" unique_id=1547105525 instance=ExtResource("3_3d6os")]
-position = Vector2(246, 362)
-polarity = -1
+[node name="Floor" parent="." index="2" unique_id=592601429 instance=ExtResource("3_fli3c")]
+position = Vector2(529, 559)
 
-[node name="Main Character" parent="." index="3" unique_id=273780980 instance=ExtResource("4_fli3c")]
-position = Vector2(238, 252)
+[node name="Floor2" parent="." index="3" unique_id=1564536870 instance=ExtResource("3_fli3c")]
+position = Vector2(156, 50)
 
 [node name="Floor3" parent="." index="4" unique_id=1559610409 instance=ExtResource("3_fli3c")]
 position = Vector2(-1.0000153, 291.00003)
 rotation = 1.5807571
 
-[node name="Floor2" parent="." index="5" unique_id=1564536870 instance=ExtResource("3_fli3c")]
-position = Vector2(156, 50)
+[node name="Floor4" parent="." index="5" unique_id=587057396 instance=ExtResource("3_fli3c")]
+position = Vector2(1161, 248)
+rotation = 1.5807571
 
-[node name="Floor" parent="." index="6" unique_id=592601429 instance=ExtResource("3_fli3c")]
-position = Vector2(529, 559)
-
-[node name="Magentic Poles3" parent="." index="7" unique_id=1459443249 instance=ExtResource("3_3d6os")]
-position = Vector2(238, 200)
-
-[node name="Magentic Poles" parent="." index="8" unique_id=1551102258 instance=ExtResource("3_3d6os")]
+[node name="Magentic Poles" parent="." index="6" unique_id=1551102258 instance=ExtResource("3_3d6os")]
 position = Vector2(487, 368)
 polarity = -1
 
-[node name="Floor4" parent="." index="9" unique_id=587057396 instance=ExtResource("3_fli3c")]
-position = Vector2(1161, 248)
-rotation = 1.5807571
+[node name="Magentic Poles2" parent="." index="7" unique_id=1547105525 instance=ExtResource("3_3d6os")]
+position = Vector2(246, 362)
+polarity = -1
+
+[node name="Magentic Poles3" parent="." index="8" unique_id=1459443249 instance=ExtResource("3_3d6os")]
+position = Vector2(238, 200)
+
+[node name="Main Character" parent="." index="9" unique_id=273780980 instance=ExtResource("4_fli3c")]
+position = Vector2(238, 252)
 
 [connection signal="input_event" from="Magentic Poles" to="Magentic Poles" method="_on_input_event"]
