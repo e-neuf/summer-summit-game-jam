@@ -373,6 +373,7 @@ position = Vector2(9583, 461)
 position = Vector2(159, 524)
 
 [node name="Ceiling" parent="." index="46" unique_id=1708724220 instance=ExtResource("11_kdcll")]
+position = Vector2(-6, -50)
 
 [node name="DEAD ZONE" parent="." index="47" unique_id=933869699 instance=ExtResource("5_vi6ws")]
 position = Vector2(1760, 665)
@@ -479,7 +480,7 @@ position = Vector2(7550, 426)
 polarity = -1
 
 [node name="Magnetic Pole20" parent="." index="76" unique_id=181570277 instance=ExtResource("2_2j4y6")]
-position = Vector2(8345, 306)
+position = Vector2(8367, 313)
 
 [node name="Floor27" parent="." index="77" unique_id=557390215 instance=ExtResource("3_cr8f5")]
 position = Vector2(8681, 531)
