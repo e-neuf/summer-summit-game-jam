@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://c2fjiov5pxmvm"]
 
-[ext_resource type="Script" uid="uid://d3fao5trb7wml" path="res://scripts/magentic_poles.gd" id="1_rmko3"]
+[ext_resource type="Script" uid="uid://d3fao5trb7wml" path="res://scripts/magnetic_pole.gd" id="1_rmko3"]
 [ext_resource type="Texture2D" uid="uid://br3jog2heg1is" path="res://icon.svg" id="2_r5wxy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sljen"]
 radius = 70.0
 
-[node name="Magentic Poles" type="Area2D" unique_id=1547105525]
+[node name="Magnetic Pole" type="Area2D" unique_id=1547105525]
 script = ExtResource("1_rmko3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=663432511]
