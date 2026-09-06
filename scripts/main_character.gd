@@ -144,3 +144,6 @@ func _physics_process(delta: float) -> void:
 
 func _exit_tree() -> void:
 	Global.Main_character = null
+func Destruct():
+	#get_tree().change_scene_to_packed(GameOver)
+	Global.Level.restart_level()

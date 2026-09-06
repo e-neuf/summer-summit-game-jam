@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cghyvyu2v4e41" path="res://objects/main_character.tscn" id="3_ohbkr"]
 [ext_resource type="PackedScene" uid="uid://i81sch75bfiy" path="res://objects/dead_zone.tscn" id="5_vi6ws"]
 [ext_resource type="PackedScene" uid="uid://c8spn5k1yfdgr" path="res://objects/tutorial_callout.tscn" id="6_tut01"]
+[ext_resource type="PackedScene" uid="uid://c1ubw0d2vus0a" path="res://objects/pass_through_blue_tri.tscn" id="6_cr8f5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cr8f5"]
 content_margin_left = 14.0
@@ -219,3 +220,6 @@ position = Vector2(159, 524)
 [node name="DEAD ZONE" parent="." index="26" unique_id=933869699 instance=ExtResource("5_vi6ws")]
 position = Vector2(1760, 665)
 scale = Vector2(10, 1)
+
+[node name="PassThrough_Blue_Tri" parent="." index="27" unique_id=873726567 instance=ExtResource("6_cr8f5")]
+position = Vector2(247, 502)
