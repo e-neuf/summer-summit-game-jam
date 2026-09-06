@@ -137,7 +137,7 @@ func _physics_process(delta: float) -> void:
 		Global.Current_Attraction = nearest
 
 	if (Global.Current_Attraction != null):
-		print("Being attracted by %s" % nearest.name)
+		#print("Being attracted by %s" % nearest.name)
 		var direction = global_position.direction_to(nearest.global_position)
 		target_velocity += direction * HOMING_SPEED
 
