@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://c2fjiov5pxmvm"]
+
+[ext_resource type="Script" uid="uid://d3fao5trb7wml" path="res://scripts/magnetic_pole.gd" id="1_rmko3"]
+[ext_resource type="Texture2D" uid="uid://br3jog2heg1is" path="res://icon.svg" id="2_r5wxy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sljen"]
+radius = 70.0
+
+[node name="Magnetic Pole" type="Area2D" unique_id=1547105525]
+script = ExtResource("1_rmko3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=663432511]
+shape = SubResource("CircleShape2D_sljen")
+debug_color = Color(0.15, 0.45, 1, 1)
+
+[node name="Label" type="Label" parent="." unique_id=1395179059]
+offset_left = -20.0
+offset_top = -14.0
+offset_right = 20.0
+offset_bottom = 14.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1728252159]
+visible = false
+texture = ExtResource("2_r5wxy")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
