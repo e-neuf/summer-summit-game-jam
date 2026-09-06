@@ -394,7 +394,7 @@ position = Vector2(5707, 552)
 scale = Vector2(2.75, 2.75)
 
 [node name="Enemy" parent="." index="52" unique_id=1418531000 instance=ExtResource("13_nu2w0")]
-position = Vector2(6166, 473)
+position = Vector2(6115, 484)
 
 [node name="LargerFloor" parent="." index="53" unique_id=1117859385 instance=ExtResource("14_rv5to")]
 position = Vector2(6150.0005, 546.00006)
