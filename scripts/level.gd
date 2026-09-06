@@ -5,6 +5,8 @@ const MAIN_MENU = "res://main_menu.tscn"
 var positive_song = preload("res://music/Somewhere Sunny.mp3")
 var negative_song = preload("res://music/Private Reflection.mp3")
 
+var positive_song_progress = 0.0
+var negative_song_progress = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -37,7 +39,11 @@ func on_player_registered() -> void:
 
 
 func on_polarity_flip(pol: int) -> void:
+	if (pol > 0):
+		negative_song_progress = $AudioStreamPlayer2D.get_playback_position()
+	else:
+		positive_song_progress = $AudioStreamPlayer2D.get_playback_position()
 	$AudioStreamPlayer2D.stop()
 	$AudioStreamPlayer2D.stream = negative_song if pol < 0 else positive_song
-	$AudioStreamPlayer2D.play()
+	$AudioStreamPlayer2D.play(positive_song_progress if pol > 0 else negative_song_progress)
 	

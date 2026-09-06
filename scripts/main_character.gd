@@ -37,9 +37,10 @@ func unregister_magnet(m) -> void:
 func reset_self() -> void:
 	velocity = Vector2.ZERO
 	global_position = start_pos
-	polarity = start_polarity
-	_update_visual()
-	polarity_flip.emit(polarity)
+	if polarity != start_polarity:
+		polarity = start_polarity
+		_update_visual()
+		polarity_flip.emit(polarity)
 
 
 func _get_color() -> Color:
