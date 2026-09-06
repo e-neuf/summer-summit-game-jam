@@ -3,9 +3,10 @@ extends Control
 const BLUE := Color(0.2314, 0.4824, 1.0)
 const RED := Color(1.0, 0.2745, 0.2745)
 const BORDER_COLOR := Color(0.1725, 0.1725, 0.2118)
+const GLOW_COLOR := Color(0, 0, 0, 0.3)
 const HALF_SIZE := Vector2(64.0, 64.0)
 const BORDER_WIDTH := 2
-const GLOW_SIZE := 10
+const GLOW_SIZE := 4
 
 
 func _ready() -> void:
@@ -26,12 +27,16 @@ func _style_label(label: Label) -> void:
 
 
 func _draw() -> void:
+	var full_rect := Rect2(Vector2.ZERO, HALF_SIZE * Vector2(2.0, 1.0))
 	var blue_rect := Rect2(Vector2.ZERO, HALF_SIZE)
 	var red_rect := Rect2(Vector2(HALF_SIZE.x, 0.0), HALF_SIZE)
-	draw_style_box(_make_stylebox(BLUE, true), blue_rect)
-	draw_style_box(_make_stylebox(RED, false), red_rect)
 
-func _make_stylebox(color: Color, rounded_left: bool) -> StyleBoxFlat:
+	draw_style_box(_make_fill_stylebox(BLUE, true), blue_rect)
+	draw_style_box(_make_fill_stylebox(RED, false), red_rect)
+	draw_style_box(_make_outline_stylebox(), full_rect)
+
+
+func _make_fill_stylebox(color: Color, rounded_left: bool) -> StyleBoxFlat:
 	var sb := StyleBoxFlat.new()
 	sb.bg_color = color
 	sb.set_corner_radius_all(0)
@@ -42,13 +47,18 @@ func _make_stylebox(color: Color, rounded_left: bool) -> StyleBoxFlat:
 	else:
 		sb.corner_radius_top_right = cap_radius
 		sb.corner_radius_bottom_right = cap_radius
+	return sb
 
+
+func _make_outline_stylebox() -> StyleBoxFlat:
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = Color(0, 0, 0, 0)
+	sb.set_corner_radius_all(int(HALF_SIZE.y / 2.0))
+	sb.border_width_left = BORDER_WIDTH
 	sb.border_width_top = BORDER_WIDTH
+	sb.border_width_right = BORDER_WIDTH
 	sb.border_width_bottom = BORDER_WIDTH
-	sb.border_width_left = BORDER_WIDTH if rounded_left else 0.0
-	sb.border_width_right = 0.0 if rounded_left else BORDER_WIDTH
 	sb.border_color = BORDER_COLOR
-
-	sb.shadow_color = Color(color.r, color.g, color.b, 0.45)
+	sb.shadow_color = GLOW_COLOR
 	sb.shadow_size = GLOW_SIZE
 	return sb
