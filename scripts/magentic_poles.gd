@@ -87,14 +87,7 @@ func _on_self_clicked(viewport: Node, event: InputEvent, shape_idx: int):
 			print("I am attractive")
 			Global.Current_Attraction = self
 		else:
-			print(
-				"I am unattractive | %s | %s | %s"
-				% [
-					polarity != Global.Main_character.polarity,
-					Global.MC_magnets_in_range.rfind(self) != -1,
-					$CollisionShape2D.shape.radius,
-				]
-			)
+			print("I am unattractive")
 			Global.Current_Attraction = null
 
 
