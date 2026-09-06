@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c2fjiov5pxmvm" path="res://objects/magnetic_pole.tscn" id="2_2j4y6"]
 [ext_resource type="PackedScene" uid="uid://dxu4i3wxckpf5" path="res://objects/floor.tscn" id="3_cr8f5"]
 [ext_resource type="PackedScene" uid="uid://cghyvyu2v4e41" path="res://objects/main_character.tscn" id="3_ohbkr"]
+[ext_resource type="PackedScene" uid="uid://i81sch75bfiy" path="res://objects/dead_zone.tscn" id="5_vi6ws"]
 
 [node name="Node2D" unique_id=1612004166 instance=ExtResource("1_b84ys")]
 
@@ -112,3 +113,7 @@ kind = 3
 
 [node name="Main Character" parent="." index="25" unique_id=273780980 instance=ExtResource("3_ohbkr")]
 position = Vector2(159, 524)
+
+[node name="DEAD ZONE" parent="." index="26" unique_id=933869699 instance=ExtResource("5_vi6ws")]
+position = Vector2(1760, 665)
+scale = Vector2(10, 1)
