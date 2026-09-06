@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cghyvyu2v4e41"]
+
+[ext_resource type="Script" uid="uid://b6p2hnymjm57v" path="res://scripts/main_character.gd" id="1_wk1kv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2j4y6"]
+animations = [{
+"frames": [],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ii6ve"]
+radius = 20.0
+
+[node name="Main Character" type="CharacterBody2D" unique_id=273780980]
+script = ExtResource("1_wk1kv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=288678229]
+sprite_frames = SubResource("SpriteFrames_2j4y6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1486875576]
+shape = SubResource("CircleShape2D_ii6ve")
+debug_color = Color(0.15, 0.45, 1, 1)
+
+[node name="Label" type="Label" parent="." unique_id=874258352]
+offset_left = -16.0
+offset_top = -15.0
+offset_right = 24.0
+offset_bottom = 13.0
+horizontal_alignment = 1
+vertical_alignment = 1
