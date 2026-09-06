@@ -85,6 +85,9 @@ func _physics_process(delta: float) -> void:
 
 	var target_velocity = Vector2.ZERO
 
+
+	var nearest = null
+	var nearest_dist = INF
 	var being_repelled = false
 	# program that if they are all in range, and they repell you, otherwise you can click on them to attract to them.
 	for mag in Global.MC_magnets_in_range:
@@ -92,26 +95,47 @@ func _physics_process(delta: float) -> void:
 			continue
 		else:
 			if (mag.polarity == polarity):
+				# repellant magnet
 				#print("Being repelled by %s" % mag.name)
 				being_repelled = true
 				var away = mag.global_position.direction_to(global_position)
 				var direction: Vector2
 				if launch_boost_timer > 0.0 and not input_dir.is_zero_approx():
 					direction = input_dir
+					print("1")
 				elif not input_dir.is_zero_approx() and input_dir.dot(away) > 0.0:
 					direction = input_dir
+					print("2")
 				else:
 					direction = away
+					print("3")
 				target_velocity += direction * REPEL_SPEED
+			else:
+				# potentially attractive magnet
+				var dist = global_position.distance_to(mag.global_position)
+				if (dist < nearest_dist):
+					nearest_dist = dist
+					nearest = mag
+
+	if (nearest == null):
+		Global.Current_Attraction = null
+
+	if (Input.is_action_just_pressed("attract")):
+		Global.Current_Attraction = nearest
 
 	if (Global.Current_Attraction != null):
-		#print("Being attracted by %s" % Global.Current_Attraction.name)
-		if (Global.MC_magnets_in_range.rfind(Global.Current_Attraction) == -1):
-			#print("No longer attracted to it")
-			Global.Current_Attraction = null
-		else:
-			var direction = global_position.direction_to(Global.Current_Attraction.global_position)
-			target_velocity += direction * HOMING_SPEED
+		print("Being attracted by %s" % nearest.name)
+		var direction = global_position.direction_to(nearest.global_position)
+		target_velocity += direction * HOMING_SPEED
+
+	#if (Global.Current_Attraction != null):
+		##print("Being attracted by %s" % Global.Current_Attraction.name)
+		#if (Global.MC_magnets_in_range.rfind(Global.Current_Attraction) == -1):
+			##print("No longer attracted to it")
+			#Global.Current_Attraction = null
+		#else:
+			#var direction = global_position.direction_to(Global.Current_Attraction.global_position)
+			#target_velocity += direction * HOMING_SPEED
 
 	velocity = velocity.lerp(target_velocity, HOMING_RESPONSE if target_velocity != Vector2.ZERO else DECCELERATION_RATE)
 
