@@ -9,6 +9,7 @@ script/source = "extends CharacterBody2D
 const SPEED = 80.0 # changes if you are negative or postive
 var polarity= -1;
 var target:MainCharacter
+var type=\"Em\"
 
 
 func _physics_process(delta: float) -> void:
@@ -51,6 +52,9 @@ func _on_sense_player_body_entered(body: Node2D) -> void:
 func _on_sense_player_body_exited(body: Node2D) -> void:
 	target=null; # Replace with function body.
 	velocity=Vector2.ZERO
+
+func Destruct():
+	queue_free()
 "
 
 [sub_resource type="Animation" id="Animation_882u1"]
