@@ -74,6 +74,13 @@ func on_polarity_flip(pol: int) -> void:
 		print("Pos from beg")
 		MusicHandler.play_music_track_from_beg(MusicHandler.MUSIC_TRACKS.Polarity_Postive_Music)
 		positive_song_progress = $AudioStreamPlayer.get_playback_position()
+		var stream_length = $AudioStreamPlayer.stream.get_length() if $AudioStreamPlayer.stream else 0.0
+		positive_song_progress = clamp(positive_song_progress, 0.0, stream_length)
+		#print("Positive song progress: %f | Total: %f" % [positive_song_progress, stream_length])
+	else:
+		negative_song_progress = $AudioStreamPlayer.get_playback_position()
+		var stream_length = $AudioStreamPlayer.stream.get_length() if $AudioStreamPlayer.stream else 0.0
+		negative_song_progress = clamp(negative_song_progress, 0.0, stream_length)
 		#print("Negative song progress: %f | Total: %f" % [negative_song_progress, stream_length])
 	
 	
