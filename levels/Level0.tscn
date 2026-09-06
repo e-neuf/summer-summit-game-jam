@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dxu4i3wxckpf5" path="res://objects/floor.tscn" id="3_fli3c"]
 [ext_resource type="PackedScene" uid="uid://i81sch75bfiy" path="res://objects/dead_zone.tscn" id="4_4uic7"]
 [ext_resource type="PackedScene" uid="uid://cghyvyu2v4e41" path="res://objects/main_character.tscn" id="4_fli3c"]
+[ext_resource type="PackedScene" uid="uid://o2da24ivn5nr" path="res://objects/door.tscn" id="4_tp4os"]
 
 [node name="Node2D" unique_id=1612004166 instance=ExtResource("1_oo2mb")]
 
@@ -35,17 +36,21 @@ position = Vector2(456, 376)
 [node name="Magnetic Pole4" parent="." index="8" unique_id=1558176676 instance=ExtResource("3_3d6os")]
 position = Vector2(1559, 460)
 
-[node name="Main Character" parent="." index="9" unique_id=273780980 instance=ExtResource("4_fli3c")]
-position = Vector2(134, 514)
-
-[node name="Floor7" parent="." index="10" unique_id=1066586342 instance=ExtResource("3_fli3c")]
+[node name="Floor7" parent="." index="9" unique_id=1066586342 instance=ExtResource("3_fli3c")]
 position = Vector2(801, 557)
 
-[node name="Floor8" parent="." index="11" unique_id=621488397 instance=ExtResource("3_fli3c")]
+[node name="Floor8" parent="." index="10" unique_id=621488397 instance=ExtResource("3_fli3c")]
 position = Vector2(1366, 568)
 scale = Vector2(11.8276005, 0.23151886)
 
+[node name="Door" parent="." index="11" unique_id=2139156745 instance=ExtResource("4_tp4os")]
+position = Vector2(1765, 527)
+scale = Vector2(1.25, 1.25)
+
 [node name="DEAD ZONE" parent="." index="12" unique_id=933869699 instance=ExtResource("4_4uic7")]
 position = Vector2(878, 662)
+
+[node name="Main Character" parent="." index="13" unique_id=273780980 instance=ExtResource("4_fli3c")]
+position = Vector2(134, 514)
 
 [connection signal="input_event" from="Magnetic Pole" to="Magnetic Pole" method="_on_input_event"]

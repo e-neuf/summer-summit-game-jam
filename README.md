@@ -1,5 +1,9 @@
 # summer-summit-game-jam
 
+## Art Credits
+Doors
+Sr.Natzu
+https://srnatzu.itch.io/doors
 
 ## Music Credits
 "Somewhere Sunny"
