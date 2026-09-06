@@ -24,6 +24,8 @@ var launch_boost_timer: float = 0.0
 
 @onready var start_pos = global_position
 @onready var start_polarity = polarity
+var checkpoint_pos: Vector2
+var checkpoint_polarity: int
 
 signal polarity_flip(pol: int)
 
@@ -36,12 +38,19 @@ func unregister_magnet(m) -> void:
 	Global.MC_magnets_in_range.erase(m)
 
 
-# Reset to starting position, polarity, and velocity
+# Called by Checkpoint areas when the player passes them - death/restart from here on
+# respawns here instead of at the level's true start.
+func set_checkpoint(pos: Vector2, pol: int) -> void:
+	checkpoint_pos = pos
+	checkpoint_polarity = pol
+
+
+# Reset to the last checkpoint (or the level's start, if none reached yet), polarity, and velocity
 func reset_self() -> void:
 	velocity = Vector2.ZERO
-	global_position = start_pos
-	if polarity != start_polarity:
-		polarity = start_polarity
+	global_position = checkpoint_pos
+	if polarity != checkpoint_polarity:
+		polarity = checkpoint_polarity
 		_update_visual()
 		polarity_flip.emit(polarity)
 
@@ -51,6 +60,8 @@ func _get_color() -> Color:
 
 
 func _ready() -> void:
+	checkpoint_pos = start_pos
+	checkpoint_polarity = start_polarity
 	Global.Main_character = self
 	Global.Player_Registered.emit()
 	_update_visual()
@@ -85,8 +96,6 @@ func _physics_process(delta: float) -> void:
 
 	var target_velocity = Vector2.ZERO
 
-	var nearest = null
-	var nearest_dist = INF
 	var being_repelled = false
 	# program that if they are all in range, and they repell you, otherwise you can click on them to attract to them.
 	for mag in Global.MC_magnets_in_range:
@@ -94,7 +103,7 @@ func _physics_process(delta: float) -> void:
 			continue
 		else:
 			if (mag.polarity == polarity):
-				print("Being repelled by %s" % mag.name)
+				#print("Being repelled by %s" % mag.name)
 				being_repelled = true
 				var away = mag.global_position.direction_to(global_position)
 				var direction: Vector2
@@ -107,9 +116,9 @@ func _physics_process(delta: float) -> void:
 				target_velocity += direction * REPEL_SPEED
 
 	if (Global.Current_Attraction != null):
-		print("Being attracted by %s" % Global.Current_Attraction.name)
+		#print("Being attracted by %s" % Global.Current_Attraction.name)
 		if (Global.MC_magnets_in_range.rfind(Global.Current_Attraction) == -1):
-			print("No longer attracted to it")
+			#print("No longer attracted to it")
 			Global.Current_Attraction = null
 		else:
 			var direction = global_position.direction_to(Global.Current_Attraction.global_position)
@@ -131,15 +140,6 @@ func _physics_process(delta: float) -> void:
 	
 	HandleCol()
 	move_and_slide()
-
-	if nearest and nearest_dist < 25:
-		if (
-			(nearest.kind == nearest.Kind.HAZARD or nearest.kind == nearest.Kind.ENEMY)
-			and polarity != nearest.polarity
-		):
-			get_tree().reload_current_scene()
-		elif nearest.kind == nearest.Kind.GOAL and polarity != nearest.polarity:
-			print("LEVEL COMPLETE")
 
 
 func _exit_tree() -> void:

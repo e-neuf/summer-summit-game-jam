@@ -6,7 +6,8 @@ const LOCKED_COLOR := Color(0.16, 0.16, 0.2)
 const LOCKED_BORDER := Color(0.28, 0.28, 0.34)
 
 const NODE_SIZE := Vector2(110.0, 100.0)
-const CENTER := Vector2(55.0, 35.0)
+const CENTER := Vector2(55.0, 35.0) # keep in sync with dashed_connector.gd's LINE_Y
+const RADIUS := 35.0
 const GLOW_RADIUS := 46.0
 
 @export var level_number: int = 1

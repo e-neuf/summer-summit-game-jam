@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://b46qdd0m57h1q" path="res://scripts/level.gd" id="1_e1enx"]
 [ext_resource type="Script" uid="uid://ccrrm8jgpodv2" path="res://scripts/background_mood.gd" id="2_lf7d8"]
-[ext_resource type="AudioStream" uid="uid://ctaiujqvfq0eq" path="res://music/Somewhere Sunny.mp3" id="2_yjrvk"]
+[ext_resource type="AudioStream" uid="uid://ctaiujqvfq0eq" path="res://assets/music/Somewhere Sunny.mp3" id="2_yjrvk"]
 [ext_resource type="Script" uid="uid://dhscvoq6gvikx" path="res://levels/horizontal_camera.gd" id="3_b38sr"]
+[ext_resource type="PackedScene" uid="uid://2ytlxtccn8js" path="res://objects/game_over_panel.tscn" id="4_greed"]
 [ext_resource type="PackedScene" path="res://objects/polarity_hud.tscn" id="4_phud1"]
 [ext_resource type="Theme" uid="uid://davmaf5vpqmx1" path="res://themes/menu_theme.tres" id="5_theme"]
 [ext_resource type="PackedScene" path="res://objects/ambient_ring.tscn" id="6_ring"]
@@ -45,7 +46,41 @@ layout_mode = 2
 text = "RESTART"
 
 [node name="PolarityHUD" parent="CanvasLayer/Control/HBoxContainer" unique_id=790234066 instance=ExtResource("4_phud1")]
+layout_mode = 2
 size_flags_vertical = 4
+
+[node name="Control2" type="Control" parent="CanvasLayer" unique_id=828619196]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control2" unique_id=516484604]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -58.5
+offset_right = 125.0
+offset_bottom = 58.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverPanel" parent="CanvasLayer/Control2/CenterContainer" unique_id=868289316 instance=ExtResource("4_greed")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=367872863]
 layer = -10

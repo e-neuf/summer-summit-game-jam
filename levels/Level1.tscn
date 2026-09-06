@@ -4,11 +4,15 @@
 [ext_resource type="PackedScene" uid="uid://c2fjiov5pxmvm" path="res://objects/magnetic_pole.tscn" id="2_2j4y6"]
 [ext_resource type="PackedScene" uid="uid://dxu4i3wxckpf5" path="res://objects/floor.tscn" id="3_cr8f5"]
 [ext_resource type="PackedScene" uid="uid://cghyvyu2v4e41" path="res://objects/main_character.tscn" id="3_ohbkr"]
+[ext_resource type="PackedScene" uid="uid://o2da24ivn5nr" path="res://objects/door.tscn" id="5_dkril"]
 [ext_resource type="PackedScene" uid="uid://i81sch75bfiy" path="res://objects/dead_zone.tscn" id="5_vi6ws"]
-[ext_resource type="PackedScene" uid="uid://c8spn5k1yfdgr" path="res://objects/tutorial_callout.tscn" id="6_tut01"]
 [ext_resource type="PackedScene" uid="uid://c1ubw0d2vus0a" path="res://objects/pass_through_blue_tri.tscn" id="6_cr8f5"]
+[ext_resource type="PackedScene" uid="uid://c8spn5k1yfdgr" path="res://objects/tutorial_callout.tscn" id="6_tut01"]
+[ext_resource type="PackedScene" uid="uid://bx2xkao2ca37d" path="res://objects/pass_through_red_tri.tscn" id="7_redtri"]
+[ext_resource type="PackedScene" path="res://objects/wall.tscn" id="8_wall"]
+[ext_resource type="PackedScene" path="res://objects/checkpoint.tscn" id="10_checkpoint"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cr8f5"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nn0v1"]
 content_margin_left = 14.0
 content_margin_top = 8.0
 content_margin_right = 12.0
@@ -26,7 +30,7 @@ corner_radius_bottom_left = 10
 shadow_color = Color(0.85, 0.55, 0.25, 0.45)
 shadow_size = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqfrg"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kdcll"]
 content_margin_left = 14.0
 content_margin_top = 8.0
 content_margin_right = 12.0
@@ -44,7 +48,7 @@ corner_radius_bottom_left = 10
 shadow_color = Color(0.85, 0.55, 0.25, 0.45)
 shadow_size = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dkril"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j4pg1"]
 content_margin_left = 14.0
 content_margin_top = 8.0
 content_margin_right = 12.0
@@ -62,7 +66,7 @@ corner_radius_bottom_left = 10
 shadow_color = Color(0.2314, 0.4824, 1, 0.45)
 shadow_size = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lbu4x"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nu2w0"]
 content_margin_left = 14.0
 content_margin_top = 8.0
 content_margin_right = 12.0
@@ -80,7 +84,7 @@ corner_radius_bottom_left = 10
 shadow_color = Color(0.2314, 0.4824, 1, 0.45)
 shadow_size = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vcl05"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rv5to"]
 content_margin_left = 14.0
 content_margin_top = 8.0
 content_margin_right = 12.0
@@ -98,26 +102,59 @@ corner_radius_bottom_left = 10
 shadow_color = Color(0.85, 0.55, 0.25, 0.45)
 shadow_size = 10
 
-[node name="Node2D" unique_id=1612004166 instance=ExtResource("1_b84ys")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j4mar"]
+content_margin_left = 14.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+bg_color = Color(0.03, 0.03, 0.04, 0.88)
+border_width_left = 3
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.85, 0.55, 0.25, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.85, 0.55, 0.25, 0.45)
+shadow_size = 10
 
-[node name="PolarityHUD" parent="CanvasLayer/Control/HBoxContainer" parent_id_path=PackedInt32Array(577890817) index="1" unique_id=790234066]
-layout_mode = 2
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bxb8"]
+content_margin_left = 14.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+bg_color = Color(0.03, 0.03, 0.04, 0.88)
+border_width_left = 3
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2314, 0.4824, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.2314, 0.4824, 1, 0.45)
+shadow_size = 10
+
+[node name="Node2D2" unique_id=1612004166 instance=ExtResource("1_b84ys")]
 
 [node name="MoveCallout" parent="." index="4" unique_id=1606925093 instance=ExtResource("6_tut01")]
 offset_left = 140.0
 offset_top = 419.0
-offset_right = 231.0
-offset_bottom = 459.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_cr8f5")
+offset_right = 230.0
+offset_bottom = 460.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_nn0v1")
 text = "Move"
 icon = "↔"
 
 [node name="JumpCallout" parent="." index="5" unique_id=1780605587 instance=ExtResource("6_tut01")]
 offset_left = 314.0
 offset_top = 353.0
-offset_right = 402.0
-offset_bottom = 393.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_gqfrg")
+offset_right = 399.0
+offset_bottom = 394.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kdcll")
 text = "Jump"
 icon = "↑"
 
@@ -125,8 +162,8 @@ icon = "↑"
 offset_left = 489.0
 offset_top = 397.0
 offset_right = 719.0
-offset_bottom = 460.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_dkril")
+offset_bottom = 485.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_j4pg1")
 text = "Opposite charges attract!
 Press space to flip."
 icon = "●"
@@ -136,19 +173,19 @@ accent = 1
 offset_left = 807.0
 offset_top = 353.0
 offset_right = 1041.0
-offset_bottom = 416.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_lbu4x")
+offset_bottom = 441.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_nu2w0")
 text = "Click the magnet's center
 to attract."
 icon = "●"
 accent = 1
 
 [node name="RepelCallout" parent="." index="8" unique_id=1059356019 instance=ExtResource("6_tut01")]
-offset_left = 1420.0
+offset_left = 1343.0
 offset_top = 300.0
-offset_right = 1691.0
-offset_bottom = 363.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_vcl05")
+offset_right = 1616.0
+offset_bottom = 388.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_rv5to")
 text = "While attracted, press space +
 an arrow key to repel."
 icon = "⊖"
@@ -212,14 +249,93 @@ position = Vector2(2478, 250)
 
 [node name="Magnetic Pole5" parent="." index="24" unique_id=1430330901 instance=ExtResource("2_2j4y6")]
 position = Vector2(2838, 326)
+
+[node name="Checkpoint1" parent="." index="25" unique_id=866780676 instance=ExtResource("10_checkpoint")]
+position = Vector2(3371, 300)
+
+[node name="TriangleCallout" parent="." index="26" unique_id=1826534249 instance=ExtResource("6_tut01")]
+offset_left = 3230.0
+offset_top = 380.0
+offset_right = 3516.0
+offset_bottom = 468.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_j4mar")
+text = "Match the triangle's color
+to walk straight through, or die."
+icon = "▲"
+
+[node name="Floor12" parent="." index="27" unique_id=599406461 instance=ExtResource("3_cr8f5")]
+position = Vector2(3371, 555)
+scale = Vector2(2.75, 2.75)
+
+[node name="Floor13" parent="." index="28" unique_id=45780815 instance=ExtResource("3_cr8f5")]
+position = Vector2(3611, 555)
+scale = Vector2(2.75, 2.75)
+
+[node name="Floor14" parent="." index="29" unique_id=900237937 instance=ExtResource("3_cr8f5")]
+position = Vector2(3851, 555)
+scale = Vector2(2.75, 2.75)
+
+[node name="Floor15" parent="." index="30" unique_id=435882988 instance=ExtResource("3_cr8f5")]
+position = Vector2(4091, 555)
+scale = Vector2(2.75, 2.75)
+
+[node name="Floor16" parent="." index="31" unique_id=28138823 instance=ExtResource("3_cr8f5")]
+position = Vector2(4331, 555)
+scale = Vector2(2.75, 2.75)
+
+[node name="Floor17" parent="." index="32" unique_id=343305063 instance=ExtResource("3_cr8f5")]
+position = Vector2(4571, 555)
+scale = Vector2(2.75, 2.75)
+
+[node name="Floor18" parent="." index="33" unique_id=1902768098 instance=ExtResource("3_cr8f5")]
+position = Vector2(4811, 555)
+scale = Vector2(2.75, 2.75)
+
+[node name="Floor19" parent="." index="34" unique_id=587437269 instance=ExtResource("3_cr8f5")]
+position = Vector2(5051, 555)
+scale = Vector2(2.75, 2.75)
+
+[node name="Magnetic Pole6" parent="." index="35" unique_id=1055395486 instance=ExtResource("2_2j4y6")]
+position = Vector2(3550, 380)
+polarity = -1
+
+[node name="PassThrough_Red_Tri" parent="." index="36" unique_id=2130109465 instance=ExtResource("7_redtri")]
+position = Vector2(3750, 506)
+
+[node name="Magnetic Pole7" parent="." index="37" unique_id=1397183393 instance=ExtResource("2_2j4y6")]
+position = Vector2(3980, 250)
+polarity = -1
+
+[node name="Magnetic Pole8" parent="." index="38" unique_id=1652457729 instance=ExtResource("2_2j4y6")]
+position = Vector2(4260, 250)
+
+[node name="WallCallout" parent="." index="39" unique_id=1377619133 instance=ExtResource("6_tut01")]
+offset_left = 4300.0
+offset_top = 150.0
+offset_right = 4524.0
+offset_bottom = 238.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1bxb8")
+text = "Get pulled up, then flip
+to launch over the wall."
+icon = "↗"
+accent = 1
+
+[node name="Wall" parent="." index="40" unique_id=475008039 instance=ExtResource("8_wall")]
+position = Vector2(4380, 374)
+
+[node name="PassThrough_Blue_Tri2" parent="." index="41" unique_id=1464371840 instance=ExtResource("6_cr8f5")]
+position = Vector2(4550, 506)
+
+[node name="Magnetic Pole9" parent="." index="42" unique_id=1248124469 instance=ExtResource("2_2j4y6")]
+position = Vector2(4900, 380)
 kind = 3
 
-[node name="Main Character" parent="." index="25" unique_id=273780980 instance=ExtResource("3_ohbkr")]
+[node name="Door" parent="." index="43" unique_id=2139156745 instance=ExtResource("5_dkril")]
+position = Vector2(5113, 495)
+
+[node name="Main Character" parent="." index="44" unique_id=273780980 instance=ExtResource("3_ohbkr")]
 position = Vector2(159, 524)
 
-[node name="DEAD ZONE" parent="." index="26" unique_id=933869699 instance=ExtResource("5_vi6ws")]
+[node name="DEAD ZONE" parent="." index="45" unique_id=933869699 instance=ExtResource("5_vi6ws")]
 position = Vector2(1760, 665)
 scale = Vector2(10, 1)
-
-[node name="PassThrough_Blue_Tri" parent="." index="27" unique_id=873726567 instance=ExtResource("6_cr8f5")]
-position = Vector2(247, 502)
