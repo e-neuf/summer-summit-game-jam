@@ -1,0 +1,162 @@
+[gd_scene format=3 uid="uid://c3d4iqvn18nat"]
+
+[ext_resource type="Texture2D" uid="uid://ec2wsx5ie3n6" path="res://art assets/animations/Enemy_Art/Enemy_4.svg" id="4_migdc"]
+
+[sub_resource type="GDScript" id="GDScript_n7us5"]
+script/source = "extends CharacterBody2D
+
+
+const SPEED = 80.0 # changes if you are negative or postive
+var polarity= -1;
+var target:MainCharacter
+var type=\"Em\"
+
+
+func _physics_process(delta: float) -> void:
+	# Add the gravity.
+	
+	if target:
+		print(\"running this\")
+		var direction=target.global_position- position;
+		var new_velocity;
+		if(target.polarity ==1):
+			new_velocity=direction.normalized() *(SPEED/2)
+			##if postive, cut enemy speed in half
+		else:
+			new_velocity=direction.normalized() *SPEED
+			
+		velocity=new_velocity
+	#find player postion
+
+	# Handle jump.
+	#if Input.is_action_just_pressed(\"ui_accept\") and is_on_floor():
+		#velocity.y = JUMP_VELOCITY
+
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	#var direction := Input.get_axis(\"ui_left\", \"ui_right\")
+	#if direction:
+		#velocity.x = direction * SPEED
+	#else:
+		#velocity.x = move_toward(velocity.x, 0, SPEED)
+
+	move_and_slide()
+
+
+func _on_sense_player_body_entered(body: Node2D) -> void:
+	if body is MainCharacter:
+		target=body
+		print(\"dont touch me body body \") # Replace with function body.
+
+
+func _on_sense_player_body_exited(body: Node2D) -> void:
+	target=null; # Replace with function body.
+	velocity=Vector2.ZERO
+
+func Destruct():
+	queue_free()
+"
+
+[sub_resource type="Animation" id="Animation_882u1"]
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.21897855, 0.40369484, 0.598985, 0.80337304, 1.0003812, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.5235988, 1.0471976, 1.5707964, 2.0943952, 2.6179938, 3.1415927]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitBox:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.22139822, 0.40369484, 0.8028891, 1.0003812, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.5235988, 1.0471976, 2.0943952, 2.6179938, 3.1415927]
+}
+
+[sub_resource type="Animation" id="Animation_7jlpp"]
+resource_name = "move"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HitBox:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3037148, 0.39970243, 0.49990025, 0.6050584, 0.70341724, 0.8047523, 0.903716, 1.0003328, 1.0988853, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.2617994, 0.5235988, 0.7853982, 1.0471976, 1.3089969, 1.5707964, 1.8325957, 2.0943952, 2.3561945, 2.6179938, 2.8797932, 3.1415927]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3037148, 0.39970243, 0.49990025, 0.60302585, 0.70341724, 0.8047523, 0.903716, 1.00072, 1.0988853, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.2617994, 0.5235988, 0.7853982, 1.0471976, 1.3089969, 1.5707964, 1.8325957, 2.0943952, 2.3561945, 2.6179938, 2.8797932, 3.1415927]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_41oev"]
+_data = {
+&"RESET": SubResource("Animation_882u1"),
+&"move": SubResource("Animation_7jlpp")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rvt5a"]
+size = Vector2(256, 131)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ngytk"]
+size = Vector2(91, 93)
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1418531000]
+collision_mask = 0
+script = SubResource("GDScript_n7us5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=651486094]
+texture = ExtResource("4_migdc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1070785889]
+libraries/ = SubResource("AnimationLibrary_41oev")
+autoplay = &"RESET"
+
+[node name="Sense_Player" type="Area2D" parent="." unique_id=1204701095]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sense_Player" unique_id=262507798]
+position = Vector2(-5, 1.5)
+shape = SubResource("RectangleShape2D_rvt5a")
+
+[node name="HitBox" type="CollisionShape2D" parent="." unique_id=518323419]
+shape = SubResource("RectangleShape2D_ngytk")
+
+[connection signal="body_entered" from="Sense_Player" to="." method="_on_sense_player_body_entered"]
+[connection signal="body_exited" from="Sense_Player" to="." method="_on_sense_player_body_exited"]
