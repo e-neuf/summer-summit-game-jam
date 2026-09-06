@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://rid3t6xsrtbw"]
+
+[ext_resource type="PackedScene" uid="uid://dveyunc1b4yi2" path="res://levels/BaseLevel.tscn" id="1_b84ys"]
+[ext_resource type="PackedScene" uid="uid://c2fjiov5pxmvm" path="res://objects/magnetic_pole.tscn" id="2_2j4y6"]
+[ext_resource type="PackedScene" uid="uid://dxu4i3wxckpf5" path="res://objects/floor.tscn" id="3_cr8f5"]
+[ext_resource type="PackedScene" uid="uid://cghyvyu2v4e41" path="res://objects/main_character.tscn" id="3_ohbkr"]
+
+[node name="Node2D" unique_id=1612004166 instance=ExtResource("1_b84ys")]
+
+[node name="Label" type="Label" parent="." index="4" unique_id=1606925093]
+offset_left = 115.0
+offset_top = 419.0
+offset_right = 214.0
+offset_bottom = 442.0
+text = "← → to move"
+
+[node name="Label2" type="Label" parent="." index="5" unique_id=1780605587]
+offset_left = 314.0
+offset_top = 353.0
+offset_right = 386.0
+offset_bottom = 376.0
+text = "↑ to jump"
+
+[node name="Label3" type="Label" parent="." index="6" unique_id=781374325]
+offset_left = 489.0
+offset_top = 397.0
+offset_right = 772.0
+offset_bottom = 446.0
+text = "Opposite charges attract each other!
+Press 'space' to flip your charge"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="." index="7" unique_id=74239400]
+offset_left = 807.0
+offset_top = 353.0
+offset_right = 1090.0
+offset_bottom = 402.0
+text = "Click the center of the
+magnet to attract"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="." index="8" unique_id=1059356019]
+offset_left = 1319.0
+offset_top = 335.0
+offset_right = 1602.0
+offset_bottom = 410.0
+text = "While attracted to the magnet,
+press 'space' and the arrow keys
+to repel from the magnet"
+horizontal_alignment = 1
+
+[node name="Floor" parent="." index="9" unique_id=1559610409 instance=ExtResource("3_cr8f5")]
+position = Vector2(161, 555)
+scale = Vector2(2.75, 2.75)
+
+[node name="Floor2" parent="." index="10" unique_id=1145804738 instance=ExtResource("3_cr8f5")]
+position = Vector2(530, 555)
+scale = Vector2(2.75, 2.75)
+
+[node name="Floor3" parent="." index="11" unique_id=1705995785 instance=ExtResource("3_cr8f5")]
+position = Vector2(768.00006, 555.00006)
+scale = Vector2(2.75, 2.75)
+
+[node name="Floor4" parent="." index="12" unique_id=470071902 instance=ExtResource("3_cr8f5")]
+position = Vector2(1005, 555)
+scale = Vector2(2.75, 2.75)
+
+[node name="Floor5" parent="." index="13" unique_id=1266498588 instance=ExtResource("3_cr8f5")]
+position = Vector2(1244, 555.00006)
+scale = Vector2(2.75, 2.75)
+
+[node name="Floor6" parent="." index="14" unique_id=73592501 instance=ExtResource("3_cr8f5")]
+position = Vector2(1483.0001, 555)
+scale = Vector2(2.75, 2.75)
+
+[node name="Floor7" parent="." index="15" unique_id=836218766 instance=ExtResource("3_cr8f5")]
+position = Vector2(2034, 555.00006)
+scale = Vector2(2.75, 2.75)
+
+[node name="Floor8" parent="." index="16" unique_id=740544301 instance=ExtResource("3_cr8f5")]
+position = Vector2(2274, 555)
+scale = Vector2(2.75, 2.75)
+
+[node name="Floor9" parent="." index="17" unique_id=876219976 instance=ExtResource("3_cr8f5")]
+position = Vector2(2514.0002, 555.00006)
+scale = Vector2(2.75, 2.75)
+
+[node name="Floor10" parent="." index="18" unique_id=869752004 instance=ExtResource("3_cr8f5")]
+position = Vector2(2754.0002, 555)
+scale = Vector2(2.75, 2.75)
+
+[node name="Floor11" parent="." index="19" unique_id=616203772 instance=ExtResource("3_cr8f5")]
+position = Vector2(2994, 555.00006)
+scale = Vector2(2.75, 2.75)
+
+[node name="Magnetic Pole" parent="." index="20" unique_id=1547105525 instance=ExtResource("2_2j4y6")]
+position = Vector2(1189, 372)
+
+[node name="Magnetic Pole2" parent="." index="21" unique_id=1567309126 instance=ExtResource("2_2j4y6")]
+position = Vector2(1758, 286)
+
+[node name="Magnetic Pole3" parent="." index="22" unique_id=156603406 instance=ExtResource("2_2j4y6")]
+position = Vector2(2241, 444)
+polarity = -1
+
+[node name="Magnetic Pole4" parent="." index="23" unique_id=1433363035 instance=ExtResource("2_2j4y6")]
+position = Vector2(2478, 196)
+
+[node name="Magnetic Pole5" parent="." index="24" unique_id=1430330901 instance=ExtResource("2_2j4y6")]
+position = Vector2(2838, 326)
+kind = 3
+
+[node name="Main Character" parent="." index="25" unique_id=273780980 instance=ExtResource("3_ohbkr")]
+position = Vector2(159, 524)

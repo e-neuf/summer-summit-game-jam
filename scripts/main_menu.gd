@@ -1,6 +1,6 @@
 extends Control
 
-const LEVEL_ONE = "res://levels/Level0.tscn"
+const LEVEL_ONE = "res://levels/Level1.tscn"
 
 
 # Called when the node enters the scene tree for the first time.
