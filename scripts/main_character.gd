@@ -32,6 +32,7 @@ func unregister_magnet(m) -> void:
 	Global.MC_magnets_in_range.erase(m)
 
 
+# Reset to starting position, polarity, and velocity
 func reset_self() -> void:
 	velocity = Vector2.ZERO
 	global_position = start_pos

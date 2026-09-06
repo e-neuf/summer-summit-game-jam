@@ -3,7 +3,7 @@ extends Area2D
 const POSITIVE_COLOR := Color(0.15, 0.45, 1.0)
 const NEGATIVE_COLOR := Color(1.0, 0.15, 0.15)
 
-const BODY_RADIUS := 18.0 #solid visible body, always this size regardless of field radius
+const BODY_RADIUS := 18.0 # solid visible body, always this size regardless of field radius
 const RING_ALPHA := 0.45
 const RING_WIDTH := 3.0
 const DASH_LENGTH := 10.0
@@ -20,7 +20,7 @@ enum Kind {
 }
 
 @export var kind: Kind = Kind.POST
-@export var polarity: int = 1 #this needs to be either 1 or -1 to be able to calculate the math
+@export var polarity: int = 1 # this needs to be either 1 or -1 to be able to calculate the math
 var current_field_radius: float = 80.0
 
 
@@ -46,7 +46,7 @@ func _draw() -> void:
 	_draw_dashed_ring(current_field_radius, Color(color.r, color.g, color.b, RING_ALPHA))
 
 
-#to show mangetic field
+# To show the mangetic field
 func _draw_dashed_ring(radius: float, color: Color) -> void:
 	var segment_angle := DASH_LENGTH / radius
 	var gap_angle := GAP_LENGTH / radius
@@ -59,13 +59,11 @@ func _draw_dashed_ring(radius: float, color: Color) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.has_method("register_magnet"):
 		body.register_magnet(self)
-		print("Magnet %s registering myself" % self.name)
 
 
 func _on_body_exited(body: Node2D) -> void:
 	if body.has_method("unregister_magnet"):
 		body.unregister_magnet(self)
-		print("Magnet %s UNregistering myself" % self.name)
 
 
 func _on_mouse_entered() -> void:
@@ -92,13 +90,17 @@ func _on_self_clicked(viewport: Node, event: InputEvent, shape_idx: int):
 
 
 func on_player_registered() -> void:
+	# Confirm current field radius
 	current_field_radius = attractive_field_radius if polarity != Global.Main_character.polarity else repellant_field_radius
 	$CollisionShape2D.shape = $CollisionShape2D.shape.duplicate()
 	$CollisionShape2D.shape.radius = current_field_radius
 	queue_redraw()
+	
+	# Listen for player polarity flip signal
 	Global.Main_character.polarity_flip.connect(on_polarity_flip)
 
 
+# When the player flips their polarity, update the current field radius
 func on_polarity_flip(pol: int) -> void:
 	current_field_radius = attractive_field_radius if polarity != pol else repellant_field_radius
 	$CollisionShape2D.shape.radius = current_field_radius
