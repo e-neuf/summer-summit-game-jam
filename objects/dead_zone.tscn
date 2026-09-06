@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://i81sch75bfiy"]
+
+[ext_resource type="Script" uid="uid://c3fgkmkjdamg0" path="res://dead_zone.gd" id="1_mhylv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ngytk"]
+size = Vector2(1285, 20)
+
+[node name="DEAD ZONE" type="Area2D" unique_id=933869699]
+script = ExtResource("1_mhylv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=350853117]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2105087510]
+position = Vector2(-249.5, 0)
+shape = SubResource("RectangleShape2D_ngytk")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
