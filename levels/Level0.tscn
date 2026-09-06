@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://dveyunc1b4yi2" path="res://levels/BaseLevel.tscn" id="1_oo2mb"]
 [ext_resource type="Script" uid="uid://ccrrm8jgpodv2" path="res://scripts/background_mood.gd" id="2_n5jrs"]
-[ext_resource type="PackedScene" uid="uid://c2fjiov5pxmvm" path="res://Object_Scenes[for duplication]/magnetic_pole.tscn" id="3_3d6os"]
-[ext_resource type="PackedScene" uid="uid://dxu4i3wxckpf5" path="res://Object_Scenes[for duplication]/floor.tscn" id="3_fli3c"]
-[ext_resource type="PackedScene" uid="uid://cghyvyu2v4e41" path="res://Object_Scenes[for duplication]/main_character.tscn" id="4_fli3c"]
+[ext_resource type="PackedScene" uid="uid://c2fjiov5pxmvm" path="res://objects/magnetic_pole.tscn" id="3_3d6os"]
+[ext_resource type="PackedScene" uid="uid://dxu4i3wxckpf5" path="res://objects/floor.tscn" id="3_fli3c"]
+[ext_resource type="PackedScene" uid="uid://cghyvyu2v4e41" path="res://objects/main_character.tscn" id="4_fli3c"]
 
 [node name="Node2D" unique_id=1612004166 instance=ExtResource("1_oo2mb")]
 

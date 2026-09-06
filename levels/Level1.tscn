@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bruosa60vusn0"]
 
-[ext_resource type="PackedScene" uid="uid://c2fjiov5pxmvm" path="res://Object_Scenes[for duplication]/magnetic_pole.tscn" id="2_2j4y6"]
+[ext_resource type="PackedScene" uid="uid://c2fjiov5pxmvm" path="res://objects/magnetic_pole.tscn" id="2_2j4y6"]
 [ext_resource type="Script" uid="uid://ccrrm8jgpodv2" path="res://scripts/background_mood.gd" id="3_bgmood"]
-[ext_resource type="PackedScene" uid="uid://cghyvyu2v4e41" path="res://Object_Scenes[for duplication]/main_character.tscn" id="3_ohbkr"]
+[ext_resource type="PackedScene" uid="uid://cghyvyu2v4e41" path="res://objects/main_character.tscn" id="3_ohbkr"]
 
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ii6ve"]
