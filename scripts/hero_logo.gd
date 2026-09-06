@@ -46,7 +46,7 @@ func _make_stylebox(color: Color, rounded_left: bool) -> StyleBoxFlat:
 	sb.border_width_top = BORDER_WIDTH
 	sb.border_width_bottom = BORDER_WIDTH
 	sb.border_width_left = BORDER_WIDTH if rounded_left else 0
-	sb.border_width_right = 0.0 if rounded_left else BORDER_WIDTH
+	sb.border_width_right = 0 if rounded_left else BORDER_WIDTH
 	sb.border_color = BORDER_COLOR
 
 	sb.shadow_color = Color(color.r, color.g, color.b, 0.45)
