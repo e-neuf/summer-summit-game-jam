@@ -18,30 +18,38 @@ const BODY_RADIUS := 20.0 #matches this node's CollisionShape2D circle radius
 var polarity: int = 1
 var flip_cooldown: float = 0.0
 
+
 func register_magnet(m) -> void:
 	Global.MC_magnets_in_range.append(m)
 
+
 func unregister_magnet(m) -> void:
 	Global.MC_magnets_in_range.erase(m)
-	
+
+
 func set_polarity(pol) -> void:
 	polarity = pol
 	_update_visual()
-	
+
+
 func _get_color() -> Color:
 	return POSITIVE_COLOR if polarity > 0 else NEGATIVE_COLOR
 
+
 func _ready() -> void:
-	Global.Main_character=self
+	Global.Main_character = self
 	_update_visual()
+
 
 func _draw() -> void:
 	draw_circle(Vector2.ZERO, BODY_RADIUS, _get_color())
+
 
 func _update_visual() -> void:
 	$Label.text = "+" if polarity > 0 else "−"
 	$Label.modulate = _get_color()
 	queue_redraw()
+
 
 func _physics_process(delta: float) -> void:
 	if flip_cooldown > 0.0:
@@ -51,7 +59,7 @@ func _physics_process(delta: float) -> void:
 		polarity *= -1
 		flip_cooldown = FLIP_COOLDOWN
 		_update_visual()
-		
+
 	var target_velocity = Vector2.ZERO
 
 	var nearest = null
@@ -61,13 +69,13 @@ func _physics_process(delta: float) -> void:
 		if not is_instance_valid(mag):
 			continue
 		else:
-			if(mag.polarity==polarity):
+			if (mag.polarity == polarity):
 				print("Being repelled by %s" % mag.name)
 				var away = global_position - mag.global_position
 				var d = max(away.length(), 1.0)
 				var target_vel = (away / d) * REPEL_SPEED
 				target_velocity += target_vel
-					
+
 	if (Global.Current_Attraction != null):
 		print("Being attracted by %s" % Global.Current_Attraction.name)
 		var to_target = Global.Current_Attraction.global_position - global_position
@@ -86,7 +94,7 @@ func _physics_process(delta: float) -> void:
 			velocity.x = move_toward(velocity.x, input_dir * MAX_SPEED, ACCEL * delta)
 		else:
 			velocity.x = move_toward(velocity.x, 0.0, ACCEL * delta)
-			
+
 	else:
 		print(target_velocity)
 		velocity = velocity.lerp(target_velocity, HOMING_RESPONSE)
@@ -94,7 +102,10 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	if nearest and nearest_dist < 25:
-		if (nearest.kind == nearest.Kind.HAZARD or nearest.kind == nearest.Kind.ENEMY) and polarity != nearest.polarity:
+		if (
+			(nearest.kind == nearest.Kind.HAZARD or nearest.kind == nearest.Kind.ENEMY)
+			and polarity != nearest.polarity
+		):
 			get_tree().reload_current_scene()
 		elif nearest.kind == nearest.Kind.GOAL and polarity != nearest.polarity:
 			print("LEVEL COMPLETE")
