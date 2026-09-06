@@ -137,7 +137,7 @@ func _physics_process(delta: float) -> void:
 		Global.Current_Attraction = nearest
 
 	if (Global.Current_Attraction != null):
-		print("Being attracted by %s" % nearest.name)
+		#print("Being attracted by %s" % nearest.name)
 		var direction = global_position.direction_to(nearest.global_position)
 		target_velocity += direction * HOMING_SPEED
 
@@ -169,7 +169,7 @@ func HandleCol():
 	for i in get_slide_collision_count():
 		var collision=get_slide_collision(i)
 		var collider=collision.get_collider()
-		if "type" in collider:
+		if collider != null && "type" in collider:
 			var type=collider.type
 			if(collider.type == "Em"):
 				if(collider.has_method("Destruct")):

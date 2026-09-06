@@ -73,6 +73,8 @@ func on_polarity_flip(pol: int) -> void:
 	elif(pol>0):
 		print("Pos from beg")
 		MusicHandler.play_music_track_from_beg(MusicHandler.MUSIC_TRACKS.Polarity_Postive_Music)
+		positive_song_progress = $AudioStreamPlayer.get_playback_position()
+		#print("Negative song progress: %f | Total: %f" % [negative_song_progress, stream_length])
 	
 	
 	

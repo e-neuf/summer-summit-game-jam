@@ -1,43 +1,169 @@
 [gd_scene format=3 uid="uid://2ytlxtccn8js"]
 
 [ext_resource type="Script" uid="uid://ub3io11ona5t" path="res://scripts/game_over_panel.gd" id="1_v5pvn"]
+[ext_resource type="PackedScene" path="res://objects/hero_logo.tscn" id="2_logo"]
+[ext_resource type="FontVariation" path="res://themes/spaced_title_font.tres" id="3_spaced"]
+[ext_resource type="Theme" uid="uid://davmaf5vpqmx1" path="res://themes/menu_theme.tres" id="4_theme"]
 
-[node name="GameOverPanel" type="PanelContainer" unique_id=868289316]
-size_flags_horizontal = 0
-size_flags_vertical = 0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.0627, 0.0627, 0.0784, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.8118, 0.4784, 0.35)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(1, 0.8118, 0.4784, 0.2)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_replay_normal"]
+content_margin_left = 22.0
+content_margin_top = 10.0
+content_margin_right = 22.0
+content_margin_bottom = 10.0
+bg_color = Color(0.078, 0.078, 0.106, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.8118, 0.4784, 0.5)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(1, 0.8118, 0.4784, 0.175)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_replay_hover"]
+content_margin_left = 22.0
+content_margin_top = 10.0
+content_margin_right = 22.0
+content_margin_bottom = 10.0
+bg_color = Color(0.11, 0.11, 0.15, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.8118, 0.4784, 0.8)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(1, 0.8118, 0.4784, 0.25)
+shadow_size = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_replay_pressed"]
+content_margin_left = 22.0
+content_margin_top = 10.0
+content_margin_right = 22.0
+content_margin_bottom = 10.0
+bg_color = Color(0.05, 0.05, 0.07, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.8118, 0.4784, 0.6)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(1, 0.8118, 0.4784, 0.15)
+shadow_size = 4
+
+[node name="GameOverPanel" type="Control" unique_id=868289316]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("4_theme")
 script = ExtResource("1_v5pvn")
 
-[node name="Margin" type="MarginContainer" parent="." unique_id=1610992780]
-layout_mode = 2
+[node name="Scrim" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+color = Color(0.0157, 0.0157, 0.0235, 0.72)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 
-[node name="VBox" type="VBoxContainer" parent="Margin" unique_id=1936262371]
-custom_minimum_size = Vector2(250, 50)
+[node name="Panel" type="PanelContainer" parent="CenterContainer"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
 
-[node name="TitleLabel" type="Label" parent="Margin/VBox" unique_id=498978511]
+[node name="Margin" type="MarginContainer" parent="CenterContainer/Panel" unique_id=1610992780]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.55, 0.55, 0.62, 1)
-theme_override_font_sizes/font_size = 32
+mouse_filter = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 32
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/Panel/Margin" unique_id=1936262371]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="HeroLogo" parent="CenterContainer/Panel/Margin/VBox" instance=ExtResource("2_logo")]
+layout_mode = 2
+size_flags_horizontal = 4
+pivot_offset = Vector2(64, 32)
+scale = Vector2(0.53, 0.53)
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/Panel/Margin/VBox" unique_id=498978511]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8118, 0.4784, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.8118, 0.4784, 0.55)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = ExtResource("3_spaced")
+theme_override_font_sizes/font_size = 40
 text = "YOU WON!"
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Margin/VBox" unique_id=1071810226]
+[node name="SubtitleLabel" type="Label" parent="CenterContainer/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.55, 0.62, 1)
+theme_override_font_sizes/font_size = 15
+text = "every push and pull got you here."
+horizontal_alignment = 1
+
+[node name="ButtonsBox" type="VBoxContainer" parent="CenterContainer/Panel/Margin/VBox" unique_id=1071810226]
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_filter = 2
-theme_override_constants/separation = 6
+theme_override_constants/separation = 10
 alignment = 1
 
-[node name="MainMenuButton" type="Button" parent="Margin/VBox/VBoxContainer" unique_id=1265284106]
+[node name="ReplayButton" type="Button" parent="CenterContainer/Panel/Margin/VBox/ButtonsBox" unique_id=1293579710]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_replay_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_replay_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_replay_pressed")
+theme_override_styles/focus = SubResource("StyleBoxFlat_replay_normal")
+text = "REPLAY"
+
+[node name="MainMenuButton" type="Button" parent="CenterContainer/Panel/Margin/VBox/ButtonsBox" unique_id=1265284106]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "MAIN MENU"
-
-[node name="ReplayButton" type="Button" parent="Margin/VBox/VBoxContainer" unique_id=1293579710]
-unique_name_in_owner = true
-layout_mode = 2
-text = "REPLAY"
