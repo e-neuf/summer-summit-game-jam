@@ -4,7 +4,7 @@ const BLUE := Color(0.2314, 0.4824, 1.0)
 const RED := Color(1.0, 0.2745, 0.2745)
 const BORDER_COLOR := Color(0.1725, 0.1725, 0.2118)
 const HALF_SIZE := Vector2(64.0, 64.0)
-const BORDER_WIDTH := 2.0
+const BORDER_WIDTH := 2
 const GLOW_SIZE := 10
 
 

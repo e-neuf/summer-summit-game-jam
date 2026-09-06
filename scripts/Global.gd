@@ -2,6 +2,7 @@ extends Node
 ##STORES VARIABLES ALL ENTITES CAN ACCESS
 ##FOR EASE OF IDK VARIABLE SHARING CUZ I BECAME STUPID
 
+signal Level_Registered()
 signal Player_Registered()
 
 var Level = null
