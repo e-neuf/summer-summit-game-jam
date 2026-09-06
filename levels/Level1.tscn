@@ -142,9 +142,9 @@ icon = "●"
 accent = 1
 
 [node name="RepelCallout" parent="." index="8" unique_id=1059356019 instance=ExtResource("6_tut01")]
-offset_left = 1420.0
+offset_left = 1343.0
 offset_top = 300.0
-offset_right = 1693.0
+offset_right = 1616.0
 offset_bottom = 388.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_kdcll")
 text = "While attracted, press space +
