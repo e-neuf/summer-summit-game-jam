@@ -51,6 +51,6 @@ polarity = -1
 position = Vector2(238, 200)
 
 [node name="Main Character" parent="." index="9" unique_id=273780980 instance=ExtResource("4_fli3c")]
-position = Vector2(238, 252)
+position = Vector2(134, 505)
 
 [connection signal="input_event" from="Magnetic Pole" to="Magnetic Pole" method="_on_input_event"]
