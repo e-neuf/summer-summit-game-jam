@@ -49,21 +49,18 @@ scale = Vector2(11.8276005, 0.23151886)
 [node name="Door" parent="." index="11" unique_id=2139156745 instance=ExtResource("4_tp4os")]
 position = Vector2(1765, 527)
 
-[node name="Main Character2" parent="." index="12" unique_id=273780980 instance=ExtResource("4_fli3c")]
-position = Vector2(134, 514)
-
-[node name="DEAD ZONE" parent="." index="13" unique_id=933869699 instance=ExtResource("4_4uic7")]
+[node name="DEAD ZONE" parent="." index="12" unique_id=933869699 instance=ExtResource("4_4uic7")]
 position = Vector2(898, 660)
 scale = Vector2(12.38619, -0.8311096)
 
-[node name="Enemy" parent="." index="16" unique_id=390106410 instance=ExtResource("6_fli3c")]
+[node name="Enemy" parent="." index="15" unique_id=390106410 instance=ExtResource("6_fli3c")]
 position = Vector2(898, 470.00003)
 scale = Vector2(0.9317645, 1.0984114)
 
-[node name="LargerFloor" parent="." index="17" unique_id=1117859385 instance=ExtResource("6_4uic7")]
+[node name="LargerFloor" parent="." index="16" unique_id=1117859385 instance=ExtResource("6_4uic7")]
 position = Vector2(2069, 568)
 
-[node name="Main Character" parent="." index="18" unique_id=445630150 instance=ExtResource("4_fli3c")]
+[node name="Main Character" parent="." index="17" unique_id=445630150 instance=ExtResource("4_fli3c")]
 position = Vector2(134, 514)
 
 [connection signal="input_event" from="Magnetic Pole" to="Magnetic Pole" method="_on_input_event"]
