@@ -2,8 +2,8 @@ extends Node2D
 
 const MAIN_MENU = "res://main_menu.tscn"
 
-var positive_song = preload("res://music/Somewhere Sunny.mp3")
-var negative_song = preload("res://music/Private Reflection.mp3")
+var positive_song = preload("res://assets/music/Somewhere Sunny.mp3")
+var negative_song = preload("res://assets/music/Private Reflection.mp3")
 
 var positive_song_progress = 0.0
 var negative_song_progress = 0.0
