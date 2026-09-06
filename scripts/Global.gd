@@ -6,6 +6,7 @@ signal Level_Registered()
 signal Player_Registered()
 
 var Level = null
+var Level_Over = false
 var MC_magnets_in_range: Array = []
 var Main_character = null
 var Current_Attraction = null

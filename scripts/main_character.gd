@@ -46,11 +46,13 @@ func set_checkpoint(pos: Vector2, pol: int) -> void:
 
 
 # Reset to the last checkpoint (or the level's start, if none reached yet), polarity, and velocity
-func reset_self() -> void:
+func reset_self(from_start: bool = false) -> void:
+	var pos = checkpoint_pos if !from_start else start_pos
+	var pol = checkpoint_polarity if !from_start else start_polarity
 	velocity = Vector2.ZERO
-	global_position = checkpoint_pos
-	if polarity != checkpoint_polarity:
-		polarity = checkpoint_polarity
+	global_position = pos
+	if polarity != pol:
+		polarity = pol
 		_update_visual()
 		polarity_flip.emit(polarity)
 
@@ -90,6 +92,9 @@ func _physics_process(delta: float) -> void:
 		_update_visual()
 		Global.Current_Attraction = null
 		polarity_flip.emit(polarity)
+		
+	if (Global.Level_Over):
+		return
 
 	# Order of arguments: Negative X, Positive X, Negative Y, Positive Y
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")

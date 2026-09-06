@@ -11,4 +11,4 @@ func _ready() -> void:
 
 func on_level_registered() -> void:
 	%MainMenuButton.pressed.connect(Global.Level.return_to_menu)
-	%ReplayButton.pressed.connect(Global.Level.restart_level)
+	%ReplayButton.pressed.connect(Global.Level.restart_level.bind(true))
