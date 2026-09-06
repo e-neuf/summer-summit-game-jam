@@ -71,6 +71,9 @@ func _physics_process(delta: float) -> void:
 		flip_cooldown = FLIP_COOLDOWN
 		_update_visual()
 		polarity_flip.emit(polarity)
+		
+	# Order of arguments: Negative X, Positive X, Negative Y, Positive Y
+	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 
 	var target_velocity = Vector2.ZERO
 
@@ -83,7 +86,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			if (mag.polarity == polarity):
 				print("Being repelled by %s" % mag.name)
-				var direction = mag.global_position.direction_to(global_position)
+				var direction = mag.global_position.direction_to(global_position) if input_dir.is_zero_approx() else input_dir
 				target_velocity += direction * REPEL_SPEED
 
 	if (Global.Current_Attraction != null):
