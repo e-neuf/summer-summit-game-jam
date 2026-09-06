@@ -4,45 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://c2fjiov5pxmvm" path="res://objects/magnetic_pole.tscn" id="2_2j4y6"]
 [ext_resource type="PackedScene" uid="uid://dxu4i3wxckpf5" path="res://objects/floor.tscn" id="3_cr8f5"]
 [ext_resource type="PackedScene" uid="uid://cghyvyu2v4e41" path="res://objects/main_character.tscn" id="3_ohbkr"]
+[ext_resource type="PackedScene" uid="uid://o2da24ivn5nr" path="res://objects/door.tscn" id="5_dkril"]
 [ext_resource type="PackedScene" uid="uid://i81sch75bfiy" path="res://objects/dead_zone.tscn" id="5_vi6ws"]
-[ext_resource type="PackedScene" uid="uid://c8spn5k1yfdgr" path="res://objects/tutorial_callout.tscn" id="6_tut01"]
 [ext_resource type="PackedScene" uid="uid://c1ubw0d2vus0a" path="res://objects/pass_through_blue_tri.tscn" id="6_cr8f5"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cr8f5"]
-content_margin_left = 14.0
-content_margin_top = 8.0
-content_margin_right = 12.0
-content_margin_bottom = 8.0
-bg_color = Color(0.03, 0.03, 0.04, 0.88)
-border_width_left = 3
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.85, 0.55, 0.25, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-shadow_color = Color(0.85, 0.55, 0.25, 0.45)
-shadow_size = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqfrg"]
-content_margin_left = 14.0
-content_margin_top = 8.0
-content_margin_right = 12.0
-content_margin_bottom = 8.0
-bg_color = Color(0.03, 0.03, 0.04, 0.88)
-border_width_left = 3
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.85, 0.55, 0.25, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-shadow_color = Color(0.85, 0.55, 0.25, 0.45)
-shadow_size = 10
+[ext_resource type="PackedScene" uid="uid://c8spn5k1yfdgr" path="res://objects/tutorial_callout.tscn" id="6_tut01"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dkril"]
 content_margin_left = 14.0
@@ -54,12 +19,12 @@ border_width_left = 3
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(0.2314, 0.4824, 1, 1)
+border_color = Color(0.85, 0.55, 0.25, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-shadow_color = Color(0.2314, 0.4824, 1, 0.45)
+shadow_color = Color(0.85, 0.55, 0.25, 0.45)
 shadow_size = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lbu4x"]
@@ -72,6 +37,24 @@ border_width_left = 3
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
+border_color = Color(0.85, 0.55, 0.25, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.85, 0.55, 0.25, 0.45)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vcl05"]
+content_margin_left = 14.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+bg_color = Color(0.03, 0.03, 0.04, 0.88)
+border_width_left = 3
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
 border_color = Color(0.2314, 0.4824, 1, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
@@ -80,7 +63,25 @@ corner_radius_bottom_left = 10
 shadow_color = Color(0.2314, 0.4824, 1, 0.45)
 shadow_size = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vcl05"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nn0v1"]
+content_margin_left = 14.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+bg_color = Color(0.03, 0.03, 0.04, 0.88)
+border_width_left = 3
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2314, 0.4824, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.2314, 0.4824, 1, 0.45)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kdcll"]
 content_margin_left = 14.0
 content_margin_top = 8.0
 content_margin_right = 12.0
@@ -98,26 +99,23 @@ corner_radius_bottom_left = 10
 shadow_color = Color(0.85, 0.55, 0.25, 0.45)
 shadow_size = 10
 
-[node name="Node2D" unique_id=1612004166 instance=ExtResource("1_b84ys")]
-
-[node name="PolarityHUD" parent="CanvasLayer/Control/HBoxContainer" parent_id_path=PackedInt32Array(577890817) index="1" unique_id=790234066]
-layout_mode = 2
+[node name="Node2D2" unique_id=1612004166 instance=ExtResource("1_b84ys")]
 
 [node name="MoveCallout" parent="." index="4" unique_id=1606925093 instance=ExtResource("6_tut01")]
 offset_left = 140.0
 offset_top = 419.0
-offset_right = 231.0
-offset_bottom = 459.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_cr8f5")
+offset_right = 230.0
+offset_bottom = 460.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dkril")
 text = "Move"
 icon = "↔"
 
 [node name="JumpCallout" parent="." index="5" unique_id=1780605587 instance=ExtResource("6_tut01")]
 offset_left = 314.0
 offset_top = 353.0
-offset_right = 402.0
-offset_bottom = 393.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_gqfrg")
+offset_right = 399.0
+offset_bottom = 394.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_lbu4x")
 text = "Jump"
 icon = "↑"
 
@@ -125,8 +123,8 @@ icon = "↑"
 offset_left = 489.0
 offset_top = 397.0
 offset_right = 719.0
-offset_bottom = 460.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_dkril")
+offset_bottom = 485.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vcl05")
 text = "Opposite charges attract!
 Press space to flip."
 icon = "●"
@@ -136,8 +134,8 @@ accent = 1
 offset_left = 807.0
 offset_top = 353.0
 offset_right = 1041.0
-offset_bottom = 416.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_lbu4x")
+offset_bottom = 441.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_nn0v1")
 text = "Click the magnet's center
 to attract."
 icon = "●"
@@ -146,9 +144,9 @@ accent = 1
 [node name="RepelCallout" parent="." index="8" unique_id=1059356019 instance=ExtResource("6_tut01")]
 offset_left = 1420.0
 offset_top = 300.0
-offset_right = 1691.0
-offset_bottom = 363.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_vcl05")
+offset_right = 1693.0
+offset_bottom = 388.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kdcll")
 text = "While attracted, press space +
 an arrow key to repel."
 icon = "⊖"
@@ -214,12 +212,15 @@ position = Vector2(2478, 250)
 position = Vector2(2838, 326)
 kind = 3
 
-[node name="Main Character" parent="." index="25" unique_id=273780980 instance=ExtResource("3_ohbkr")]
+[node name="Door" parent="." index="25" unique_id=2139156745 instance=ExtResource("5_dkril")]
+position = Vector2(3057, 494.99997)
+
+[node name="Main Character" parent="." index="26" unique_id=273780980 instance=ExtResource("3_ohbkr")]
 position = Vector2(159, 524)
 
-[node name="DEAD ZONE" parent="." index="26" unique_id=933869699 instance=ExtResource("5_vi6ws")]
+[node name="DEAD ZONE" parent="." index="27" unique_id=933869699 instance=ExtResource("5_vi6ws")]
 position = Vector2(1760, 665)
 scale = Vector2(10, 1)
 
-[node name="PassThrough_Blue_Tri" parent="." index="27" unique_id=873726567 instance=ExtResource("6_cr8f5")]
+[node name="PassThrough_Blue_Tri" parent="." index="28" unique_id=873726567 instance=ExtResource("6_cr8f5")]
 position = Vector2(247, 502)
