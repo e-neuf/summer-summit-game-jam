@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c1ubw0d2vus0a"]
+
+[ext_resource type="Script" uid="uid://devi47r7e3icf" path="res://general_passithrough.gd" id="1_l74hf"]
+[ext_resource type="Texture2D" uid="uid://knglynp7b6qn" path="res://art assets/BlueTriArt.svg" id="2_l74hf"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_ngytk"]
+points = PackedVector2Array(0, -32, 35, 28, -35, 28)
+
+[node name="PassThrough_Blue_Tri" type="Area2D" unique_id=873726567]
+script = ExtResource("1_l74hf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1166268770]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_l74hf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1647823603]
+shape = SubResource("ConvexPolygonShape2D_ngytk")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
