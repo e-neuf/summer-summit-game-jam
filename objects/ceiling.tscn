@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dvogxy0a5wu2w"]
+
+[ext_resource type="Script" uid="uid://h65gx7mb0c8r" path="res://scripts/celing_remake.gd" id="1_2prej"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ngytk"]
+
+[node name="Celing" type="Area2D" unique_id=1708724220]
+script = ExtResource("1_2prej")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1335895626]
+scale = Vector2(1418.4698, -4.0870285)
+shape = SubResource("RectangleShape2D_ngytk")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
