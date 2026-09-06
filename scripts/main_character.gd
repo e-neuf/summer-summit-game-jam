@@ -73,9 +73,6 @@ func _physics_process(delta: float) -> void:
 		Global.Current_Attraction = null
 		polarity_flip.emit(polarity)
 
-	#if Input.is_action_just_pressed("jump") and is_on_floor():
-		#velocity.y=-JUMP_FORCE
-
 	# Order of arguments: Negative X, Positive X, Negative Y, Positive Y
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 
@@ -114,9 +111,8 @@ func _physics_process(delta: float) -> void:
 	elif Input.is_action_just_pressed("jump"):
 		velocity.y += JUMP_VELOCITY
 	if(!being_repelled && target_velocity==Vector2.ZERO):
-		var direction := Input.get_axis("move_left", "move_right")
-		if direction != 0.0:
-			velocity.x = move_toward(velocity.x, direction * MAX_SPEED, ACCEL * delta)
+		if input_dir.x != 0.0:
+			velocity.x = move_toward(velocity.x, input_dir.x * MAX_SPEED, ACCEL * delta)
 		else:
 			velocity.x = move_toward(velocity.x, 0.0, ACCEL * delta)
 	
