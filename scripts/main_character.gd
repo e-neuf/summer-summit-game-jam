@@ -18,6 +18,11 @@ const BODY_RADIUS := 20.0 #matches this node's CollisionShape2D circle radius
 var polarity: int = 1
 var flip_cooldown: float = 0.0
 
+@onready var start_pos = global_position
+@onready var start_polarity = polarity
+
+signal polarity_flip(pol: int)
+
 
 func register_magnet(m) -> void:
 	Global.MC_magnets_in_range.append(m)
@@ -27,9 +32,12 @@ func unregister_magnet(m) -> void:
 	Global.MC_magnets_in_range.erase(m)
 
 
-func set_polarity(pol) -> void:
-	polarity = pol
+func reset_self() -> void:
+	velocity = Vector2.ZERO
+	global_position = start_pos
+	polarity = start_polarity
 	_update_visual()
+	polarity_flip.emit(polarity)
 
 
 func _get_color() -> Color:
@@ -38,6 +46,7 @@ func _get_color() -> Color:
 
 func _ready() -> void:
 	Global.Main_character = self
+	Global.Player_Registered.emit()
 	_update_visual()
 
 
@@ -59,6 +68,7 @@ func _physics_process(delta: float) -> void:
 		polarity *= -1
 		flip_cooldown = FLIP_COOLDOWN
 		_update_visual()
+		polarity_flip.emit(polarity)
 
 	var target_velocity = Vector2.ZERO
 
@@ -109,3 +119,7 @@ func _physics_process(delta: float) -> void:
 			get_tree().reload_current_scene()
 		elif nearest.kind == nearest.Kind.GOAL and polarity != nearest.polarity:
 			print("LEVEL COMPLETE")
+
+
+func _exit_tree() -> void:
+	Global.Main_character = null

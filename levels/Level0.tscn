@@ -42,10 +42,12 @@ rotation = 1.5807571
 [node name="Magentic Poles" parent="." index="6" unique_id=1551102258 instance=ExtResource("3_3d6os")]
 position = Vector2(487, 368)
 polarity = -1
+current_field_radius = 200.0
 
 [node name="Magentic Poles2" parent="." index="7" unique_id=1547105525 instance=ExtResource("3_3d6os")]
 position = Vector2(246, 362)
 polarity = -1
+current_field_radius = 200.0
 
 [node name="Magentic Poles3" parent="." index="8" unique_id=1459443249 instance=ExtResource("3_3d6os")]
 position = Vector2(238, 200)
