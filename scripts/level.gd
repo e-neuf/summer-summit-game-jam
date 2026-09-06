@@ -36,6 +36,10 @@ func restart_level() -> void:
 	Global.Main_character.reset_self()
 	
 	
+func game_over() -> void:
+	%GameOverPanel.show()
+	
+	
 func on_player_registered() -> void:
 	Global.Main_character.polarity_flip.connect(on_polarity_flip)
 
