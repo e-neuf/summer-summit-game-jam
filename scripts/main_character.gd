@@ -169,7 +169,7 @@ func HandleCol():
 	for i in get_slide_collision_count():
 		var collision=get_slide_collision(i)
 		var collider=collision.get_collider()
-		if "type" in collider:
+		if collider != null && "type" in collider:
 			var type=collider.type
 			if(collider.type == "Em"):
 				if(collider.has_method("Destruct")):
