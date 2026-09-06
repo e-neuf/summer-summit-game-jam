@@ -10,11 +10,6 @@ A platform game with a magnetic personality!
 
 ---
 
-## AI Usage
-TBA
-
----
-
 ## Art Credits
 Doors
 
