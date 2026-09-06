@@ -1,17 +1,13 @@
 [gd_scene format=3 uid="uid://dxu4i3wxckpf5"]
 
-[ext_resource type="Texture2D" uid="uid://vintonhuiyyb" path="res://art assets/Brown Off.png" id="1_3f04m"]
+[ext_resource type="Script" path="res://scripts/floor.gd" id="1_flr01"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4uic7"]
 size = Vector2(86, 18)
 
 [node name="Floor" type="StaticBody2D" unique_id=1559610409]
+script = ExtResource("1_flr01")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1156240617]
 position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_4uic7")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=64677938]
-texture_filter = 1
-scale = Vector2(2.703125, 2.812499)
-texture = ExtResource("1_3f04m")

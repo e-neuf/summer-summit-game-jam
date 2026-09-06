@@ -1,3 +1,4 @@
+class_name MainCharacter
 extends CharacterBody2D
 
 const GRAVITY := 600.0
@@ -11,13 +12,15 @@ const HOMING_LEAD := 70.0
 const REPEL_SPEED := 280.0 #symmetric with HOMING_SPEED by default; tune independently if repel should feel different
 const FLIP_COOLDOWN := 0.35
 const PASSED_MARGIN := 20.0 #how far past a POST/GOAL magnet (in +x) before it stops being homed to
+const LAUNCH_BOOST_WINDOW := 0.25 #brief grace period after flipping out of an active attraction, during which held input fully overrides the "must point away" anti-cheese filter below - this is what makes the deliberate flip-to-launch move work
 
-const POSITIVE_COLOR := Color(0.15, 0.45, 1.0)
-const NEGATIVE_COLOR := Color(1.0, 0.15, 0.15)
+const POSITIVE_COLOR := Color(0.5608, 0.7020, 1.0) # player positive, #8FB3FF - lighter than the magnet's #3B7BFF so the player always reads as visually distinct from a magnet
+const NEGATIVE_COLOR := Color(1.0, 0.6078, 0.6078) # player negative, #FF9B9B - lighter than the magnet's #FF4646
 const BODY_RADIUS := 20.0 #matches this node's CollisionShape2D circle radius
 
 var polarity: int = 1
 var flip_cooldown: float = 0.0
+var launch_boost_timer: float = 0.0
 
 @onready var start_pos = global_position
 @onready var start_polarity = polarity
@@ -65,8 +68,12 @@ func _update_visual() -> void:
 func _physics_process(delta: float) -> void:
 	if flip_cooldown > 0.0:
 		flip_cooldown -= delta
+	if launch_boost_timer > 0.0:
+		launch_boost_timer -= delta
 
 	if Input.is_action_just_pressed("flip_polarity") and flip_cooldown <= 0.0:
+		if Global.Current_Attraction != null:
+			launch_boost_timer = LAUNCH_BOOST_WINDOW
 		polarity *= -1
 		flip_cooldown = FLIP_COOLDOWN
 		_update_visual()
@@ -89,12 +96,18 @@ func _physics_process(delta: float) -> void:
 			if (mag.polarity == polarity):
 				print("Being repelled by %s" % mag.name)
 				being_repelled = true
-				var direction = mag.global_position.direction_to(global_position) if input_dir.is_zero_approx() else input_dir
+				var away = mag.global_position.direction_to(global_position)
+				var direction: Vector2
+				if launch_boost_timer > 0.0 and not input_dir.is_zero_approx():
+					direction = input_dir
+				elif not input_dir.is_zero_approx() and input_dir.dot(away) > 0.0:
+					direction = input_dir
+				else:
+					direction = away
 				target_velocity += direction * REPEL_SPEED
 
 	if (Global.Current_Attraction != null):
 		print("Being attracted by %s" % Global.Current_Attraction.name)
-		# If the player is no longer in range of the magnet, stop attraction
 		if (Global.MC_magnets_in_range.rfind(Global.Current_Attraction) == -1):
 			print("No longer attracted to it")
 			Global.Current_Attraction = null

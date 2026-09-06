@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/polarity_hud.gd" id="1"]
+
+[node name="PolarityHUD" type="PanelContainer"]
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 2
+script = ExtResource("1")
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="VBox" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+theme_override_constants/separation = 4
+mouse_filter = 2
+
+[node name="TitleLabel" type="Label" parent="Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.55, 0.62, 1)
+theme_override_font_sizes/font_size = 11
+mouse_filter = 2
+text = "POLARITY"
+
+[node name="SymbolRow" type="HBoxContainer" parent="Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+mouse_filter = 2
+
+[node name="SymbolDot" type="Panel" parent="Margin/VBox/SymbolRow"]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="SymbolLabel" type="Label" parent="Margin/VBox/SymbolRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+vertical_alignment = 1
+mouse_filter = 2
+text = "+"
+
+[node name="CooldownBar" type="ProgressBar" parent="Margin/VBox"]
+custom_minimum_size = Vector2(90, 5)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+show_percentage = false
+mouse_filter = 2

@@ -5,50 +5,152 @@
 [ext_resource type="PackedScene" uid="uid://dxu4i3wxckpf5" path="res://objects/floor.tscn" id="3_cr8f5"]
 [ext_resource type="PackedScene" uid="uid://cghyvyu2v4e41" path="res://objects/main_character.tscn" id="3_ohbkr"]
 [ext_resource type="PackedScene" uid="uid://i81sch75bfiy" path="res://objects/dead_zone.tscn" id="5_vi6ws"]
+[ext_resource type="PackedScene" uid="uid://c8spn5k1yfdgr" path="res://objects/tutorial_callout.tscn" id="6_tut01"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cr8f5"]
+content_margin_left = 14.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+bg_color = Color(0.03, 0.03, 0.04, 0.88)
+border_width_left = 3
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.85, 0.55, 0.25, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.85, 0.55, 0.25, 0.45)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqfrg"]
+content_margin_left = 14.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+bg_color = Color(0.03, 0.03, 0.04, 0.88)
+border_width_left = 3
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.85, 0.55, 0.25, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.85, 0.55, 0.25, 0.45)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dkril"]
+content_margin_left = 14.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+bg_color = Color(0.03, 0.03, 0.04, 0.88)
+border_width_left = 3
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2314, 0.4824, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.2314, 0.4824, 1, 0.45)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lbu4x"]
+content_margin_left = 14.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+bg_color = Color(0.03, 0.03, 0.04, 0.88)
+border_width_left = 3
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2314, 0.4824, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.2314, 0.4824, 1, 0.45)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vcl05"]
+content_margin_left = 14.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+bg_color = Color(0.03, 0.03, 0.04, 0.88)
+border_width_left = 3
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.85, 0.55, 0.25, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.85, 0.55, 0.25, 0.45)
+shadow_size = 10
 
 [node name="Node2D" unique_id=1612004166 instance=ExtResource("1_b84ys")]
 
-[node name="Label" type="Label" parent="." index="4" unique_id=1606925093]
-offset_left = 115.0
-offset_top = 419.0
-offset_right = 214.0
-offset_bottom = 442.0
-text = "← → to move"
+[node name="PolarityHUD" parent="CanvasLayer/Control/HBoxContainer" parent_id_path=PackedInt32Array(577890817) index="1" unique_id=790234066]
+layout_mode = 2
 
-[node name="Label2" type="Label" parent="." index="5" unique_id=1780605587]
+[node name="MoveCallout" parent="." index="4" unique_id=1606925093 instance=ExtResource("6_tut01")]
+offset_left = 140.0
+offset_top = 419.0
+offset_right = 231.0
+offset_bottom = 459.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_cr8f5")
+text = "Move"
+icon = "↔"
+
+[node name="JumpCallout" parent="." index="5" unique_id=1780605587 instance=ExtResource("6_tut01")]
 offset_left = 314.0
 offset_top = 353.0
-offset_right = 386.0
-offset_bottom = 376.0
-text = "↑ to jump"
+offset_right = 402.0
+offset_bottom = 393.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_gqfrg")
+text = "Jump"
+icon = "↑"
 
-[node name="Label3" type="Label" parent="." index="6" unique_id=781374325]
+[node name="AttractCallout" parent="." index="6" unique_id=781374325 instance=ExtResource("6_tut01")]
 offset_left = 489.0
 offset_top = 397.0
-offset_right = 772.0
-offset_bottom = 446.0
-text = "Opposite charges attract each other!
-Press 'space' to flip your charge"
-horizontal_alignment = 1
+offset_right = 719.0
+offset_bottom = 460.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dkril")
+text = "Opposite charges attract!
+Press space to flip."
+icon = "●"
+accent = 1
 
-[node name="Label4" type="Label" parent="." index="7" unique_id=74239400]
+[node name="ClickToAttractCallout" parent="." index="7" unique_id=74239400 instance=ExtResource("6_tut01")]
 offset_left = 807.0
 offset_top = 353.0
-offset_right = 1090.0
-offset_bottom = 402.0
-text = "Click the center of the
-magnet to attract"
-horizontal_alignment = 1
+offset_right = 1041.0
+offset_bottom = 416.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_lbu4x")
+text = "Click the magnet's center
+to attract."
+icon = "●"
+accent = 1
 
-[node name="Label5" type="Label" parent="." index="8" unique_id=1059356019]
-offset_left = 1319.0
-offset_top = 335.0
-offset_right = 1602.0
-offset_bottom = 410.0
-text = "While attracted to the magnet,
-press 'space' and the arrow keys
-to repel from the magnet"
-horizontal_alignment = 1
+[node name="RepelCallout" parent="." index="8" unique_id=1059356019 instance=ExtResource("6_tut01")]
+offset_left = 1420.0
+offset_top = 300.0
+offset_right = 1691.0
+offset_bottom = 363.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vcl05")
+text = "While attracted, press space +
+an arrow key to repel."
+icon = "⊖"
 
 [node name="Floor" parent="." index="9" unique_id=1559610409 instance=ExtResource("3_cr8f5")]
 position = Vector2(161, 555)
@@ -105,7 +207,7 @@ position = Vector2(2241, 444)
 polarity = -1
 
 [node name="Magnetic Pole4" parent="." index="23" unique_id=1433363035 instance=ExtResource("2_2j4y6")]
-position = Vector2(2478, 196)
+position = Vector2(2478, 250)
 
 [node name="Magnetic Pole5" parent="." index="24" unique_id=1430330901 instance=ExtResource("2_2j4y6")]
 position = Vector2(2838, 326)

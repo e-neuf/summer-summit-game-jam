@@ -1,0 +1,144 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/level_select.gd" id="1_sel"]
+[ext_resource type="Theme" path="res://themes/menu_theme.tres" id="2_theme"]
+[ext_resource type="FontVariation" path="res://themes/spaced_title_font.tres" id="3_title"]
+[ext_resource type="PackedScene" path="res://objects/ambient_ring.tscn" id="4_ring"]
+[ext_resource type="PackedScene" path="res://objects/level_node.tscn" id="5_node"]
+[ext_resource type="Script" path="res://scripts/dashed_connector.gd" id="6_connector"]
+
+[node name="LevelSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_sel")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0314, 0.0314, 0.0431, 1)
+
+[node name="AmbientRings" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="RingTopLeft" parent="AmbientRings" instance=ExtResource("4_ring")]
+layout_mode = 1
+anchors_preset = 0
+anchor_left = 0.06
+anchor_top = 0.1
+anchor_right = 0.06
+anchor_bottom = 0.1
+radius = 210.0
+ring_color = Color(0.2314, 0.4824, 1.0, 0.18)
+
+[node name="RingBottomRight" parent="AmbientRings" instance=ExtResource("4_ring")]
+layout_mode = 1
+anchors_preset = 0
+anchor_left = 0.94
+anchor_top = 0.9
+anchor_right = 0.94
+anchor_bottom = 0.9
+radius = 170.0
+ring_color = Color(1.0, 0.2745, 0.2745, 0.16)
+
+[node name="RingTopRight" parent="AmbientRings" instance=ExtResource("4_ring")]
+layout_mode = 1
+anchors_preset = 0
+anchor_left = 0.92
+anchor_top = 0.14
+anchor_right = 0.92
+anchor_bottom = 0.14
+radius = 110.0
+ring_color = Color(1.0, 0.2745, 0.2745, 0.16)
+
+[node name="RingBottomLeft" parent="AmbientRings" instance=ExtResource("4_ring")]
+layout_mode = 1
+anchors_preset = 0
+anchor_left = 0.08
+anchor_top = 0.86
+anchor_right = 0.08
+anchor_bottom = 0.86
+radius = 90.0
+ring_color = Color(0.2314, 0.4824, 1.0, 0.18)
+
+[node name="BackButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 110.0
+offset_bottom = 56.0
+text = "← Back"
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_title")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+text = "SELECT LEVEL"
+
+[node name="SubtitleLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.55, 0.62, 1)
+theme_override_font_sizes/font_size = 15
+horizontal_alignment = 1
+text = "1 of 4 unlocked"
+
+[node name="RowSpacer" type="Control" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 20)
+
+[node name="LevelRow" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 70
+alignment = 1
+script = ExtResource("6_connector")
+
+[node name="Level1Node" parent="CenterContainer/VBoxContainer/LevelRow" instance=ExtResource("5_node")]
+layout_mode = 2
+level_number = 1
+unlocked = true
+target_scene = "res://levels/Level1.tscn"
+
+[node name="Level2Node" parent="CenterContainer/VBoxContainer/LevelRow" instance=ExtResource("5_node")]
+layout_mode = 2
+level_number = 2
+
+[node name="Level3Node" parent="CenterContainer/VBoxContainer/LevelRow" instance=ExtResource("5_node")]
+layout_mode = 2
+level_number = 3
+
+[node name="Level4Node" parent="CenterContainer/VBoxContainer/LevelRow" instance=ExtResource("5_node")]
+layout_mode = 2
+level_number = 4
