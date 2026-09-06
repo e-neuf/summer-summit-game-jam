@@ -31,7 +31,6 @@ func _get_color() -> Color:
 func _ready() -> void:
 	add_to_group("magnets")
 	$Label.text = "+" if polarity > 0 else "−"
-	$Label.modulate = _get_color()
 	self.input_event.connect(_on_self_clicked)
 	Global.Player_Registered.connect(on_player_registered)
 

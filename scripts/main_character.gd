@@ -55,11 +55,10 @@ func _ready() -> void:
 
 func _draw() -> void:
 	draw_circle(Vector2.ZERO, BODY_RADIUS, _get_color())
+	$Label.text = "+" if polarity > 0 else "−"
 
 
 func _update_visual() -> void:
-	$Label.text = "+" if polarity > 0 else "−"
-	$Label.modulate = _get_color()
 	queue_redraw()
 
 
