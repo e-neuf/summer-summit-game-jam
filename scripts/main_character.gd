@@ -70,6 +70,7 @@ func _physics_process(delta: float) -> void:
 		polarity *= -1
 		flip_cooldown = FLIP_COOLDOWN
 		_update_visual()
+		Global.Current_Attraction = null
 		polarity_flip.emit(polarity)
 
 	#if Input.is_action_just_pressed("jump") and is_on_floor():
