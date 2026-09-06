@@ -143,7 +143,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = move_toward(velocity.x, 0.0, ACCEL * delta)
 	
-	
+	HandleCol()
 	move_and_slide()
 
 
@@ -152,3 +152,18 @@ func _exit_tree() -> void:
 func Destruct():
 	#get_tree().change_scene_to_packed(GameOver)
 	Global.Level.restart_level()
+	
+func HandleCol():
+	for i in get_slide_collision_count():
+		var collision=get_slide_collision(i)
+		var collider=collision.get_collider()
+		if "type" in collider:
+			var type=collider.type
+			if(collider.type == "Em"):
+				if(collider.has_method("Destruct")):
+					if(polarity==1):
+						collider.Destruct()
+					else:
+						Destruct()
+		##check if you are postive, if you are, kill the enemy instead of you. otherwise, run your destruct
+		
