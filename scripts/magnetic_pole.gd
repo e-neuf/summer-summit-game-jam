@@ -37,7 +37,6 @@ func _get_color() -> Color:
 func _ready() -> void:
 	add_to_group("magnets")
 	$Label.text = "+" if polarity > 0 else "−"
-	self.input_event.connect(_on_self_clicked)
 	# Global.Player_Registered fires once, from the player's own _ready() - if this magnet's
 	# _ready() runs after that (e.g. it's declared later in the scene file than the player
 	# node, as every Zone 2 magnet is), connecting alone would miss it forever. Same guard
@@ -86,20 +85,6 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	pass # Replace with function body.
-
-
-#func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-#if event.is_action_pressed("mouse_click"):
-#print("help")
-func _on_self_clicked(viewport: Node, event: InputEvent, shape_idx: int):
-	if event.is_action_pressed("mouse_click"):
-		print("help " + self.name)
-		if (polarity != Global.Main_character.polarity && Global.MC_magnets_in_range.rfind(self) != -1):
-			print("I am attractive")
-			Global.Current_Attraction = self
-		else:
-			print("I am unattractive")
-			Global.Current_Attraction = null
 
 
 func on_player_registered() -> void:
