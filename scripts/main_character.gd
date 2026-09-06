@@ -24,6 +24,8 @@ var launch_boost_timer: float = 0.0
 
 @onready var start_pos = global_position
 @onready var start_polarity = polarity
+var checkpoint_pos: Vector2
+var checkpoint_polarity: int
 
 signal polarity_flip(pol: int)
 
@@ -36,12 +38,19 @@ func unregister_magnet(m) -> void:
 	Global.MC_magnets_in_range.erase(m)
 
 
-# Reset to starting position, polarity, and velocity
+# Called by Checkpoint areas when the player passes them - death/restart from here on
+# respawns here instead of at the level's true start.
+func set_checkpoint(pos: Vector2, pol: int) -> void:
+	checkpoint_pos = pos
+	checkpoint_polarity = pol
+
+
+# Reset to the last checkpoint (or the level's start, if none reached yet), polarity, and velocity
 func reset_self() -> void:
 	velocity = Vector2.ZERO
-	global_position = start_pos
-	if polarity != start_polarity:
-		polarity = start_polarity
+	global_position = checkpoint_pos
+	if polarity != checkpoint_polarity:
+		polarity = checkpoint_polarity
 		_update_visual()
 		polarity_flip.emit(polarity)
 
@@ -51,6 +60,8 @@ func _get_color() -> Color:
 
 
 func _ready() -> void:
+	checkpoint_pos = start_pos
+	checkpoint_polarity = start_polarity
 	Global.Main_character = self
 	Global.Player_Registered.emit()
 	_update_visual()

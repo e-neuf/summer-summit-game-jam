@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://i81sch75bfiy" path="res://objects/dead_zone.tscn" id="5_vi6ws"]
 [ext_resource type="PackedScene" uid="uid://c8spn5k1yfdgr" path="res://objects/tutorial_callout.tscn" id="6_tut01"]
 [ext_resource type="PackedScene" uid="uid://c1ubw0d2vus0a" path="res://objects/pass_through_blue_tri.tscn" id="6_cr8f5"]
+[ext_resource type="PackedScene" uid="uid://bx2xkao2ca37d" path="res://objects/pass_through_red_tri.tscn" id="7_redtri"]
+[ext_resource type="PackedScene" path="res://objects/wall.tscn" id="8_wall"]
+[ext_resource type="PackedScene" path="res://objects/checkpoint.tscn" id="10_checkpoint"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cr8f5"]
 content_margin_left = 14.0
@@ -212,7 +215,6 @@ position = Vector2(2478, 250)
 
 [node name="Magnetic Pole5" parent="." index="24" unique_id=1430330901 instance=ExtResource("2_2j4y6")]
 position = Vector2(2838, 326)
-kind = 3
 
 [node name="Main Character" parent="." index="25" unique_id=273780980 instance=ExtResource("3_ohbkr")]
 position = Vector2(159, 524)
@@ -221,5 +223,74 @@ position = Vector2(159, 524)
 position = Vector2(1760, 665)
 scale = Vector2(10, 1)
 
-[node name="PassThrough_Blue_Tri" parent="." index="27" unique_id=873726567 instance=ExtResource("6_cr8f5")]
-position = Vector2(247, 502)
+[node name="Checkpoint1" parent="." index="28" instance=ExtResource("10_checkpoint")]
+position = Vector2(3371, 300)
+
+[node name="TriangleCallout" parent="." index="29" instance=ExtResource("6_tut01")]
+position = Vector2(3230, 380)
+text = "Match the triangle's color
+to walk straight through, or die."
+icon = "▲"
+
+[node name="Floor12" parent="." index="30" instance=ExtResource("3_cr8f5")]
+position = Vector2(3371, 555)
+scale = Vector2(2.75, 2.75)
+
+[node name="Floor13" parent="." index="31" instance=ExtResource("3_cr8f5")]
+position = Vector2(3611, 555)
+scale = Vector2(2.75, 2.75)
+
+[node name="Floor14" parent="." index="32" instance=ExtResource("3_cr8f5")]
+position = Vector2(3851, 555)
+scale = Vector2(2.75, 2.75)
+
+[node name="Floor15" parent="." index="33" instance=ExtResource("3_cr8f5")]
+position = Vector2(4091, 555)
+scale = Vector2(2.75, 2.75)
+
+[node name="Floor16" parent="." index="34" instance=ExtResource("3_cr8f5")]
+position = Vector2(4331, 555)
+scale = Vector2(2.75, 2.75)
+
+[node name="Floor17" parent="." index="35" instance=ExtResource("3_cr8f5")]
+position = Vector2(4571, 555)
+scale = Vector2(2.75, 2.75)
+
+[node name="Floor18" parent="." index="36" instance=ExtResource("3_cr8f5")]
+position = Vector2(4811, 555)
+scale = Vector2(2.75, 2.75)
+
+[node name="Floor19" parent="." index="37" instance=ExtResource("3_cr8f5")]
+position = Vector2(5051, 555)
+scale = Vector2(2.75, 2.75)
+
+[node name="Magnetic Pole6" parent="." index="38" instance=ExtResource("2_2j4y6")]
+position = Vector2(3550, 380)
+polarity = -1
+
+[node name="PassThrough_Red_Tri" parent="." index="39" instance=ExtResource("7_redtri")]
+position = Vector2(3750, 506)
+
+[node name="Magnetic Pole7" parent="." index="40" instance=ExtResource("2_2j4y6")]
+position = Vector2(3980, 250)
+polarity = -1
+
+[node name="Magnetic Pole8" parent="." index="41" instance=ExtResource("2_2j4y6")]
+position = Vector2(4260, 250)
+
+[node name="WallCallout" parent="." index="42" instance=ExtResource("6_tut01")]
+position = Vector2(4300, 150)
+text = "Get pulled up, then flip
+to launch over the wall."
+icon = "↗"
+accent = 1
+
+[node name="Wall" parent="." index="43" instance=ExtResource("8_wall")]
+position = Vector2(4380, 374)
+
+[node name="PassThrough_Blue_Tri2" parent="." index="44" instance=ExtResource("6_cr8f5")]
+position = Vector2(4550, 506)
+
+[node name="Magnetic Pole9" parent="." index="45" instance=ExtResource("2_2j4y6")]
+position = Vector2(4900, 380)
+kind = 3

@@ -38,7 +38,14 @@ func _ready() -> void:
 	add_to_group("magnets")
 	$Label.text = "+" if polarity > 0 else "−"
 	self.input_event.connect(_on_self_clicked)
-	Global.Player_Registered.connect(on_player_registered)
+	# Global.Player_Registered fires once, from the player's own _ready() - if this magnet's
+	# _ready() runs after that (e.g. it's declared later in the scene file than the player
+	# node, as every Zone 2 magnet is), connecting alone would miss it forever. Same guard
+	# level.gd/polarity_hud.gd/horizontal_camera.gd already use for the same signal.
+	if Global.Main_character:
+		on_player_registered()
+	else:
+		Global.Player_Registered.connect(on_player_registered)
 
 
 func _process(_delta: float) -> void:
@@ -124,7 +131,14 @@ func _find_ground() -> void:
 	var result := space_state.intersect_ray(query)
 	_ground_offset_y = (result.position.y - global_position.y) if result else null
 
+# Deferred because this can be triggered mid-physics-query-flush (e.g. dead_zone.gd's
+# body_entered -> restart_level() -> reset_self() -> polarity_flip, all within one physics
+# step) - Godot disallows changing an Area2D's collision shape synchronously in that window.
 func _update_field_shape() -> void:
+	_apply_field_shape.call_deferred()
+
+
+func _apply_field_shape() -> void:
 	if _ground_offset_y == null:
 		var shape := CircleShape2D.new()
 		shape.radius = current_field_radius
