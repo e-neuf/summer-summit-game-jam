@@ -100,10 +100,8 @@ func _physics_process(delta: float) -> void:
 			target_velocity = Vector2.ZERO
 			velocity = Vector2.ZERO
 		else:
-<<<<<<< Updated upstream
 			var direction = global_position.direction_to(Global.Current_Attraction.global_position)
 			target_velocity += direction * HOMING_SPEED
-=======
 			velocity.x = move_toward(velocity.x, 0.0, ACCEL * delta)
 		if not is_on_floor():
 			velocity.y += Global.gravity
@@ -111,7 +109,6 @@ func _physics_process(delta: float) -> void:
 				velocity.y=1000
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			velocity.y=-JUMP_FORCE
->>>>>>> Stashed changes
 
 	velocity = velocity.lerp(target_velocity, HOMING_RESPONSE if target_velocity != Vector2.ZERO else DECCELERATION_RATE)
 
