@@ -11,6 +11,7 @@ const HOMING_LEAD := 70.0
 const REPEL_SPEED := 260.0 #symmetric with HOMING_SPEED by default; tune independently if repel should feel different
 const FLIP_COOLDOWN := 0.35
 const PASSED_MARGIN := 20.0 #how far past a POST/GOAL magnet (in +x) before it stops being homed to
+const JUMP_FORCE:=10
 
 const POSITIVE_COLOR := Color(0.15, 0.45, 1.0)
 const NEGATIVE_COLOR := Color(1.0, 0.15, 0.15)
@@ -99,8 +100,18 @@ func _physics_process(delta: float) -> void:
 			target_velocity = Vector2.ZERO
 			velocity = Vector2.ZERO
 		else:
+<<<<<<< Updated upstream
 			var direction = global_position.direction_to(Global.Current_Attraction.global_position)
 			target_velocity += direction * HOMING_SPEED
+=======
+			velocity.x = move_toward(velocity.x, 0.0, ACCEL * delta)
+		if not is_on_floor():
+			velocity.y += Global.gravity
+			if velocity.y>1000:
+				velocity.y=1000
+		if Input.is_action_just_pressed("jump") and is_on_floor():
+			velocity.y=-JUMP_FORCE
+>>>>>>> Stashed changes
 
 	velocity = velocity.lerp(target_velocity, HOMING_RESPONSE if target_velocity != Vector2.ZERO else DECCELERATION_RATE)
 
