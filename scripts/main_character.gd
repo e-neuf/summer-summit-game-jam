@@ -83,11 +83,6 @@ func _physics_process(delta: float) -> void:
 		else:
 			if (mag.polarity == polarity):
 				print("Being repelled by %s" % mag.name)
-				#var away = global_position - mag.global_position
-				#var d = max(away.length(), 1.0)
-				#var target_vel = (away / d) * REPEL_SPEED
-				#target_velocity += target_vel
-				
 				var direction = mag.global_position.direction_to(global_position)
 				target_velocity += direction * REPEL_SPEED
 
@@ -104,16 +99,6 @@ func _physics_process(delta: float) -> void:
 			var direction = global_position.direction_to(Global.Current_Attraction.global_position)
 			target_velocity += direction * HOMING_SPEED
 
-	#if (target_velocity == Vector2.ZERO):
-		#print("No magnets currently acting on player, velocity: (%f, %f)" % [velocity.x, velocity.y])
-		#var input_dir := Input.get_axis("move_left", "move_right")
-		#if input_dir != 0.0:
-			#velocity.x = move_toward(velocity.x, input_dir * MAX_SPEED, ACCEL * delta)
-		#else:
-			#velocity.x = move_toward(velocity.x, 0.0, ACCEL * delta)
-#
-	#else:
-		#print(target_velocity)
 	velocity = velocity.lerp(target_velocity, HOMING_RESPONSE if target_velocity != Vector2.ZERO else DECCELERATION_RATE)
 
 	move_and_slide()
