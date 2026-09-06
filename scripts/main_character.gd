@@ -73,9 +73,6 @@ func _physics_process(delta: float) -> void:
 		Global.Current_Attraction = null
 		polarity_flip.emit(polarity)
 
-	#if Input.is_action_just_pressed("jump") and is_on_floor():
-		#velocity.y=-JUMP_FORCE
-
 	# Order of arguments: Negative X, Positive X, Negative Y, Positive Y
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 
