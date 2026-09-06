@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ctaiujqvfq0eq"
+path="res://.godot/imported/Somewhere Sunny.mp3-4f027d76ffeeb6408ccc23eede809daf.mp3str"
+
+[deps]
+
+source_file="res://music/Somewhere Sunny.mp3"
+dest_files=["res://.godot/imported/Somewhere Sunny.mp3-4f027d76ffeeb6408ccc23eede809daf.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
