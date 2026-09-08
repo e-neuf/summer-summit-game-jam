@@ -472,7 +472,7 @@ and kill you if you get too close!"
 icon = "■"
 
 [node name="Enemy" parent="." index="52" unique_id=1418531000 instance=ExtResource("13_nu2w0")]
-position = Vector2(5850, 500)
+position = Vector2(6200, 300)
 
 [node name="LargerFloor" parent="." index="53" unique_id=1117859385 instance=ExtResource("3_cr8f5")]
 position = Vector2(6150.0005, 546.00006)
