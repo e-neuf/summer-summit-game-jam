@@ -47,12 +47,14 @@ func set_checkpoint(pos: Vector2, pol: int) -> void:
 
 # Reset to the last checkpoint (or the level's start, if none reached yet), polarity, and velocity
 func reset_self(from_start: bool = false) -> void:
-	var pos = checkpoint_pos if !from_start else start_pos
-	var pol = checkpoint_polarity if !from_start else start_polarity
+	if (from_start):
+		checkpoint_polarity = start_polarity
+		checkpoint_pos = start_pos
+	
 	velocity = Vector2.ZERO
-	global_position = pos
-	if polarity != pol:
-		polarity = pol
+	global_position = checkpoint_pos
+	if polarity != checkpoint_polarity:
+		polarity = checkpoint_polarity
 		_update_visual()
 		polarity_flip.emit(polarity)
 
