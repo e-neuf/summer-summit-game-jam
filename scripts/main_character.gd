@@ -50,7 +50,7 @@ func reset_self(from_start: bool = false) -> void:
 	if (from_start):
 		checkpoint_polarity = start_polarity
 		checkpoint_pos = start_pos
-	
+
 	velocity = Vector2.ZERO
 	global_position = checkpoint_pos
 	if polarity != checkpoint_polarity:
@@ -94,7 +94,7 @@ func _physics_process(delta: float) -> void:
 		_update_visual()
 		Global.Current_Attraction = null
 		polarity_flip.emit(polarity)
-		
+
 	if (Global.Level_Over):
 		return
 
@@ -102,7 +102,6 @@ func _physics_process(delta: float) -> void:
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 
 	var target_velocity = Vector2.ZERO
-
 
 	var nearest = null
 	var nearest_dist = INF
@@ -143,7 +142,10 @@ func _physics_process(delta: float) -> void:
 		var direction = global_position.direction_to(nearest.global_position)
 		target_velocity += direction * HOMING_SPEED
 
-	velocity = velocity.lerp(target_velocity, HOMING_RESPONSE if target_velocity != Vector2.ZERO else DECCELERATION_RATE)
+	velocity = velocity.lerp(
+		target_velocity,
+		HOMING_RESPONSE if target_velocity != Vector2.ZERO else DECCELERATION_RATE,
+	)
 
 	if (not is_on_floor() && !being_repelled):
 		velocity.y += Global.Gravity
@@ -151,33 +153,35 @@ func _physics_process(delta: float) -> void:
 			velocity.y = 1000
 	elif Input.is_action_just_pressed("jump"):
 		velocity.y += JUMP_VELOCITY
-	if(!being_repelled && target_velocity==Vector2.ZERO):
+	if (!being_repelled && target_velocity == Vector2.ZERO):
 		if input_dir.x != 0.0:
 			velocity.x = move_toward(velocity.x, input_dir.x * MAX_SPEED, ACCEL * delta)
 		else:
 			velocity.x = move_toward(velocity.x, 0.0, ACCEL * delta)
-	
+
 	HandleCol()
 	move_and_slide()
 
 
 func _exit_tree() -> void:
 	Global.Main_character = null
+
+
 func Destruct():
 	#get_tree().change_scene_to_packed(GameOver)
 	Global.Level.restart_level()
-	
+
+
 func HandleCol():
 	for i in get_slide_collision_count():
-		var collision=get_slide_collision(i)
-		var collider=collision.get_collider()
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
 		if collider != null && "type" in collider:
-			var type=collider.type
-			if(collider.type == "Em"):
-				if(collider.has_method("Destruct")):
-					if(polarity==1):
+			var type = collider.type
+			if (collider.type == "Em"):
+				if (collider.has_method("Destruct")):
+					if (polarity == 1):
 						collider.Destruct()
 					else:
 						Destruct()
 		##check if you are postive, if you are, kill the enemy instead of you. otherwise, run your destruct
-		

@@ -1,15 +1,19 @@
 @tool
 extends PanelContainer
 
-enum Accent { NEUTRAL, POSITIVE, NEGATIVE }
+enum Accent {
+	NEUTRAL,
+	POSITIVE,
+	NEGATIVE,
+}
 
 const BG_COLOR := Color(0.03, 0.03, 0.04, 0.88)
-const NEUTRAL_COLOR := Color(0.85, 0.55, 0.25) 
-const POSITIVE_COLOR := Color(0.2314, 0.4824, 1.0) 
-const NEGATIVE_COLOR := Color(1.0, 0.2745, 0.2745) 
+const NEUTRAL_COLOR := Color(0.85, 0.55, 0.25)
+const POSITIVE_COLOR := Color(0.2314, 0.4824, 1.0)
+const NEGATIVE_COLOR := Color(1.0, 0.2745, 0.2745)
 const ACCENT_BORDER_WIDTH := 3
 const EDGE_BORDER_WIDTH := 1
-const CORNER_RADIUS := 10 
+const CORNER_RADIUS := 10
 const GLOW_ALPHA := 0.45
 const GLOW_SIZE := 10
 

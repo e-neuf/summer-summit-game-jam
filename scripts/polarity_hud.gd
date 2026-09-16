@@ -2,7 +2,7 @@ extends PanelContainer
 
 const POSITIVE_COLOR := Color(0.5608, 0.7020, 1.0)
 const NEGATIVE_COLOR := Color(1.0, 0.6078, 0.6078)
-const BG_COLOR := Color(0.078, 0.078, 0.106, 0.95) 
+const BG_COLOR := Color(0.078, 0.078, 0.106, 0.95)
 const BORDER_COLOR := Color(0.243, 0.243, 0.298, 1.0)
 const ACCENT_WIDTH := 3
 const CORNER_RADIUS := 10
@@ -24,7 +24,11 @@ func _process(_delta: float) -> void:
 		return
 	var ratio := 1.0
 	if MainCharacter.FLIP_COOLDOWN > 0.0:
-		ratio = 1.0 - clamp(Global.Main_character.flip_cooldown / MainCharacter.FLIP_COOLDOWN, 0.0, 1.0)
+		ratio = 1.0 - clamp(
+			Global.Main_character.flip_cooldown / MainCharacter.FLIP_COOLDOWN,
+			0.0,
+			1.0,
+		)
 	$Margin/VBox/CooldownBar.value = ratio
 
 
@@ -32,6 +36,7 @@ func _on_player_registered() -> void:
 	polarity = Global.Main_character.polarity
 	Global.Main_character.polarity_flip.connect(_on_polarity_flip)
 	_update_visual()
+
 
 func _on_polarity_flip(pol: int) -> void:
 	polarity = pol

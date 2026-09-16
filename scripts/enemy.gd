@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-
 const SPEED = 100.0 # slow, persistent pursuit - a background threat, not an instant resolve
 const POSITIVE_COLOR := Color(0.2314, 0.4824, 1.0) # matches magnetic_pole.gd's positive color
 const NEGATIVE_COLOR := Color(1.0, 0.2745, 0.2745) # matches magnetic_pole.gd's negative color
@@ -13,11 +12,18 @@ const SPIN_SPEED := 3.2
 
 # Irregular jagged silhouette, local space, centered on origin -
 # a loose shard of unstable scrap rather than a smooth shape.
-var BODY_POINTS := PackedVector2Array([
-	Vector2(-8, -40), Vector2(18, -32), Vector2(38, -8),
-	Vector2(30, 20), Vector2(10, 38), Vector2(-22, 34),
-	Vector2(-40, 10), Vector2(-32, -18),
-])
+var BODY_POINTS := PackedVector2Array(
+	[
+		Vector2(-8, -40),
+		Vector2(18, -32),
+		Vector2(38, -8),
+		Vector2(30, 20),
+		Vector2(10, 38),
+		Vector2(-22, 34),
+		Vector2(-40, 10),
+		Vector2(-32, -18),
+	]
+)
 
 var polarity = -1
 var target: MainCharacter

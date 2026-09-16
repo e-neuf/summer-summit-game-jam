@@ -62,7 +62,16 @@ func _draw_lock_icon() -> void:
 	draw_circle(LOCK_BADGE_CENTER, LOCK_BADGE_RADIUS, LOCK_BADGE_COLOR)
 
 	var shackle_center := LOCK_BADGE_CENTER + Vector2(0, LOCK_SHACKLE_OFFSET_Y)
-	draw_arc(shackle_center, LOCK_SHACKLE_RADIUS, PI, TAU, 16, LOCK_ICON_COLOR, LOCK_SHACKLE_WIDTH, true)
+	draw_arc(
+		shackle_center,
+		LOCK_SHACKLE_RADIUS,
+		PI,
+		TAU,
+		16,
+		LOCK_ICON_COLOR,
+		LOCK_SHACKLE_WIDTH,
+		true,
+	)
 
 	var body_center := LOCK_BADGE_CENTER + Vector2(0, LOCK_BODY_OFFSET_Y)
 	var body_rect := Rect2(body_center - LOCK_BODY_SIZE / 2.0, LOCK_BODY_SIZE)

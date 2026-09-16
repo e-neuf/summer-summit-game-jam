@@ -29,4 +29,7 @@ func _draw() -> void:
 		draw_rect(Rect2(Vector2(x0, top_left.y), Vector2(x1 - x0 + 0.5, SIZE.y)), color)
 
 	draw_rect(Rect2(top_left, Vector2(EDGE_WIDTH, SIZE.y)), EDGE_HIGHLIGHT)
-	draw_rect(Rect2(Vector2(top_left.x + SIZE.x - EDGE_WIDTH, top_left.y), Vector2(EDGE_WIDTH, SIZE.y)), EDGE_HIGHLIGHT)
+	draw_rect(
+		Rect2(Vector2(top_left.x + SIZE.x - EDGE_WIDTH, top_left.y), Vector2(EDGE_WIDTH, SIZE.y)),
+		EDGE_HIGHLIGHT,
+	)

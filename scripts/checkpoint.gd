@@ -14,7 +14,12 @@ func _ready() -> void:
 func _draw() -> void:
 	var top := Vector2(0, -HEIGHT / 2.0)
 	var bottom := Vector2(0, HEIGHT / 2.0)
-	draw_line(top, bottom, Color(BEACON_COLOR.r, BEACON_COLOR.g, BEACON_COLOR.b, GLOW_ALPHA), GLOW_WIDTH)
+	draw_line(
+		top,
+		bottom,
+		Color(BEACON_COLOR.r, BEACON_COLOR.g, BEACON_COLOR.b, GLOW_ALPHA),
+		GLOW_WIDTH,
+	)
 	draw_line(top, bottom, BEACON_COLOR, LINE_WIDTH)
 
 

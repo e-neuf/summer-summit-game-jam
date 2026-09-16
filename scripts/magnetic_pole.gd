@@ -112,9 +112,13 @@ func on_polarity_flip(pol: int) -> void:
 # Casts a ray straight down from the magnet to find the ground beneath it, if any.
 func _find_ground() -> void:
 	var space_state := get_world_2d().direct_space_state
-	var query := PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(0, GROUND_RAY_LENGTH))
+	var query := PhysicsRayQueryParameters2D.create(
+		global_position,
+		global_position + Vector2(0, GROUND_RAY_LENGTH),
+	)
 	var result := space_state.intersect_ray(query)
 	_ground_offset_y = (result.position.y - global_position.y) if result else null
+
 
 # Deferred because this can be triggered mid-physics-query-flush (e.g. dead_zone.gd's
 # body_entered -> restart_level() -> reset_self() -> polarity_flip, all within one physics
