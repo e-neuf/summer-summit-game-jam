@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c1ubw0d2vus0a"]
 
-[ext_resource type="Script" uid="uid://devi47r7e3icf" path="res://general_passithrough.gd" id="1_l74hf"]
+[ext_resource type="Script" uid="uid://devi47r7e3icf" path="res://general_passthrough.gd" id="1_l74hf"]
 [ext_resource type="Texture2D" uid="uid://knglynp7b6qn" path="res://art assets/BlueTriArt.svg" id="2_l74hf"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_ngytk"]
